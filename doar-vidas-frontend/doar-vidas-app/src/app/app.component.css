@@ -1,2 +1,39 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+main{
+  height: 93.5%;
+}
+.btn-menu {
+    min-width: 60px;
+    padding:0;
+}
+.mat-toolbar-row {
+  padding:0;
+}
+.sidenav-container {
+  height: 100%;
+}
+.sidenav-container .sidenav-content {
+  width:20%;
+}
+.logo-container {
+    width:85%;
+    text-align: center;
+}
+.logo-container a {
+    color:#fff;
+    text-decoration: none;
+}
+.logo-container a:hover,
+.logo-container a:active,
+.logo-container a:focus {
+    text-decoration: none;
+}
+.user-container {
+    width:10%;
+}
+@media only screen and (max-width:440px) {
+  .sidenav-container .sidenav-content {
+    width:30%;
+  }
+}

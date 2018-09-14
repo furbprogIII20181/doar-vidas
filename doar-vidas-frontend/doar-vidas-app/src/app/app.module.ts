@@ -6,13 +6,15 @@ import {ROUTES} from './app.route';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatIconModule, MatMenuModule, MatCardModule, MatToolbarModule, MatSidenavModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatIconModule, MatMenuModule, MatCardModule, MatToolbarModule, MatSidenavModule,MatGridListModule} from '@angular/material';
 import { HomeComponent } from './home/home.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +26,7 @@ import { HomeComponent } from './home/home.component';
     MatCardModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatGridListModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [],

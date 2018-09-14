@@ -1,19 +1,24 @@
-<header>
-  <mat-toolbar color="primary">
+<header role="banner">
+  <mat-toolbar color="warn">
     <mat-toolbar-row>
       <div fxShow="true" fxHide.gt-sm="true">
-        <button mat-mini-fab color="primary" class="btn-btn-menu" (click)="sidenav.toggle()">☰</button>
+        <button mat-flat-button color="warn" role="button" class="btn btn-menu" (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
       </div>
-      <a [routerLink]="['/']">Doar vidas</a>
+      <div class="logo-container">
+        <a [routerLink]="['/']" role="logo">{{title}}</a>
+      </div>
+      <div class="user-container">
+        Olá usuario
+      </div>
     </mat-toolbar-row>
   </mat-toolbar>
 </header>
-<main id="main-content" class="main-content">
-  <mat-sidenav-container fxFlexFill class="example-container">
-    <mat-sidenav #sidenav fxLayout="column">
-      <div fxLayout="column">
-        <a [routerLink]="['/']" mat-button>Teste </a> 
-      </div>
+<main id="main-content" class="main-content" role="main">
+  <mat-sidenav-container fxFlexFill class="sidenav-container">
+    <mat-sidenav #sidenav fxLayout="column" class="sidenav-content">
+        <app-menu></app-menu>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
       <router-outlet></router-outlet>
