@@ -2,6 +2,7 @@ package com.furb.br.doarvidas.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 
 /**
  * Representa um Doador
@@ -14,6 +15,7 @@ public class Donator extends Person {
 	@Column(nullable = false)
 	private Long cpf;
 	
+	@Enumerated
 	@Column(nullable = false)
 	private BloodType bloodType;
 

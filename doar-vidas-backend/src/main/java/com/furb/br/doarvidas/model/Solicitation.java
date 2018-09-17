@@ -2,6 +2,7 @@ package com.furb.br.doarvidas.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -17,6 +18,7 @@ public class Solicitation extends BasicEntity {
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	private Institution institution;
 	
+	@Enumerated
 	@Column(nullable = false)
 	private BloodType bloodType;
 	

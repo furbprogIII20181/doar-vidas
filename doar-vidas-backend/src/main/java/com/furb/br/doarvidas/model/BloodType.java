@@ -1,5 +1,7 @@
 package com.furb.br.doarvidas.model;
 
+import javax.persistence.EnumType;
+
 /**
  * Representa os tipos sanguíneos existentes, com o seu fator RH.
  * 
@@ -7,6 +9,10 @@ package com.furb.br.doarvidas.model;
  */
 public enum BloodType {
 
+	/**
+	 * NÃO ALTERAR A ORDEM DOS ENUMS.
+	 * Campo é persistido como {@link EnumType#ORDINAL}
+	 */
 	APOS("A+"),
 	ANEG("A-"),
 	BPOS("B+"),
