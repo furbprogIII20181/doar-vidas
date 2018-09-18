@@ -1,0 +1,25 @@
+.login-card {
+    max-width: 400px;
+    margin: 30px auto;
+}
+
+.login-card .mat-form-field {
+    display: block;
+}
+.login-card .mat-card-actions {
+    margin-left:0;
+    margin-right:0;
+}
+.login-card .mat-card-actions button {
+    width:100%;
+    margin-bottom:20px;
+}
+.login-card .mat-card-actions a {
+    margin-top:10px;
+    display: block;
+    text-align: center;
+    font-size: 22px;
+}
+.mat-hint a {
+    color:rgba(0,0,0,.87);
+}
