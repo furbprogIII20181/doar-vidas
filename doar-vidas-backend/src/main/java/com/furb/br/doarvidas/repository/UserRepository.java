@@ -9,4 +9,6 @@ import com.furb.br.doarvidas.model.User;
  */
 public interface UserRepository extends BasicRepository<User> {
 
+	User findByUserName(String userName);
+	
 }
