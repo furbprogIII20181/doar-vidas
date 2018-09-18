@@ -1,5 +1,7 @@
 package com.furb.br.doarvidas.repository;
 
+import java.util.Optional;
+
 import com.furb.br.doarvidas.model.User;
 
 /**
@@ -9,6 +11,6 @@ import com.furb.br.doarvidas.model.User;
  */
 public interface UserRepository extends BasicRepository<User> {
 
-	User findByUserName(String userName);
+	Optional<User> findByUserName(String userName);
 	
 }

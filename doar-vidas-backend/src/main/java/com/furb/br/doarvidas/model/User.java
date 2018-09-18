@@ -1,9 +1,12 @@
 package com.furb.br.doarvidas.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * Representa um Usuário
@@ -22,8 +25,16 @@ public class User extends BasicEntity {
 	@Column(nullable=false)
 	private String password;
 	
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	private Role role;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<Role> roles;
+
+	public User(User user) {
+		this.setId(user.getId());
+		this.setUserName(user.getUserName());
+		this.setEmail(user.getEmail());
+		this.setPassword(user.getPassword());
+		this.setRoles(user.getRoles());
+	}
 
 	public String getUserName() {
 		return userName;
@@ -49,12 +60,12 @@ public class User extends BasicEntity {
 		this.password = password;
 	}
 
-	public Role getRole() {
-		return role;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 	
 }
