@@ -1,6 +1,6 @@
 package com.furb.br.doarvidas.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,31 +17,18 @@ import javax.persistence.OneToMany;
 public class User extends BasicEntity {
 
 	@Column(nullable=false)
-	private String userName;
-
-	@Column(nullable=false)
     private String email;
 	
 	@Column(nullable=false)
 	private String password;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Set<Role> roles;
+	private List<Role> roles;
 
-	public User(User user) {
-		this.setId(user.getId());
-		this.setUserName(user.getUserName());
-		this.setEmail(user.getEmail());
-		this.setPassword(user.getPassword());
-		this.setRoles(user.getRoles());
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public User(String email, String password, List<Role> roles) {
+		this.email = email;
+		this.password = password;
+		this.roles = roles;
 	}
 
 	public String getEmail() {
@@ -60,11 +47,11 @@ public class User extends BasicEntity {
 		this.password = password;
 	}
 
-	public Set<Role> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 	
