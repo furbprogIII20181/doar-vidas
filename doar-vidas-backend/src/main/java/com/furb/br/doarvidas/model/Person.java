@@ -1,8 +1,10 @@
 package com.furb.br.doarvidas.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
 /**
@@ -10,8 +12,9 @@ import javax.persistence.OneToOne;
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */
-@MappedSuperclass
-public abstract class Person extends BasicEntity {
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Entity
+public class Person extends BasicEntity {
 	
 	@Column(nullable = false)
 	private String name;
@@ -22,6 +25,9 @@ public abstract class Person extends BasicEntity {
 	@Column(nullable = false)
 	private String state;
 	
+	@Column(insertable=false, updatable=false)
+	private String tipo;
+	
 	/**
 	 * Contém o DDD+Telefone
 	 */
@@ -29,7 +35,7 @@ public abstract class Person extends BasicEntity {
 	private String phone;
 	
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
-	private User user;
+	private UserEntity user;
 	
 	private String description;
 
@@ -74,12 +80,20 @@ public abstract class Person extends BasicEntity {
 		this.description = description;
 	}
 
-	public User getUser() {
+	public UserEntity getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserEntity user) {
 		this.user = user;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 }
