@@ -7,8 +7,7 @@
     display: block;
 }
 .login-card .mat-card-actions {
-    margin-left:0;
-    margin-right:0;
+    margin:0;
 }
 .login-card .mat-card-actions button {
     width:100%;
@@ -19,19 +18,20 @@
     color:#fff;
     opacity: 0.5;
 }
-.login-card .mat-card-actions a {
-    margin-top:10px;
+.login-card .mat-card-actions a.btn-register {
+    margin-top:40px;
     display: block;
     text-align: center;
     font-size: 22px;
 }
 
 .social-login-buttons {
+    margin-bottom:15px;
     display: flex;
     justify-content: space-between;
 }
 
-.login-card .mat-card-actions .social-login-buttons button {
+.login-card .mat-card-actions .social-login-buttons a {
     width:49%;
 }
 

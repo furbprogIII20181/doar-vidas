@@ -2,36 +2,36 @@
   
     
   <mat-card class="login-card">
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title><h1>Faça Login</h1></mat-card-title>
+    </mat-card-header>
     <form [formGroup]="loginForm" novalidate>  
-      <mat-card-header>
-        <!-- <div mat-card-avatar class="example-header-image"></div> -->
-        <mat-card-title><h1>Faça Login</h1></mat-card-title>
-      </mat-card-header>
       <mat-card-content>
         <mat-form-field>
-          <input matInput formControlName="email" placeholder="E-mail" autocomplete="off">
-          <mat-error *ngIf="!loginForm.get('email').valid && loginForm.get('email').dirty">E-mail com o formato incorreto. Ex.: demo@demo.com</mat-error>
+            <input matInput formControlName="email" placeholder="E-mail" autocomplete="off">
+            <mat-error *ngIf="!loginForm.get('email').valid && loginForm.get('email').dirty">E-mail com o formato incorreto. Ex.: demo@demo.com</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput formControlName="password" placeholder="Senha" autocomplete="off" [type]="hide ? 'password' : 'text'">
-          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-          <mat-error *ngIf="!loginForm.get('password').valid  && loginForm.get('password').dirty">A senha deve ter no mínimo 6 caracteres.</mat-error>
+            <input matInput formControlName="password" placeholder="Senha" autocomplete="off" [type]="hide ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            <mat-error *ngIf="!loginForm.get('password').valid  && loginForm.get('password').dirty">A senha deve ter no mínimo 6 caracteres.</mat-error>
         </mat-form-field> 
         <a class="forgot-pass-link" href="#">Esqueceu a senha?</a>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button color="warn" role="button" [disabled]="!loginForm.valid">Entrar</button>
+        <button mat-flat-button color="warn" role="button"  (click)="onSubmit()">Entrar</button>
         <mat-divider></mat-divider>
       </mat-card-actions>
-    </form>
-    <mat-card-actions>
+      <mat-card-actions>
         <p>Ou faça login pelas redes sociais:</p>
         <div class="social-login-buttons">
-          <button mat-flat-button role="button">Facebook</button>
-          <button mat-flat-button color="warn" role="button">Google</button>
+          <a mat-flat-button role="button">Facebook</a>
+          <a mat-flat-button color="warn" role="button">Google</a>
         </div>
         <mat-divider></mat-divider>
-        <a mat-button color="warn" href="#">Cadastre-se aqui.</a>
-    </mat-card-actions>
+        <a mat-button class="btn-register" color="warn" [routerLink]="['/register']">Cadastre-se aqui.</a>
+      </mat-card-actions>
+    </form>
   </mat-card>
 </section>

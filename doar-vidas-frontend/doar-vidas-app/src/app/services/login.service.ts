@@ -1,9 +1,11 @@
 import { Injectable } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class LoginService {
-    constructor(private http: HttpClientModule){}
+    constructor(private http: HttpClient){}
 
     loginAction(email:String, pass: String) {
         return true;

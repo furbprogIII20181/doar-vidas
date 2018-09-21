@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoginService } from './login.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +11,6 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
 
-  hide = true;
-
   constructor(private formBuilder: FormBuilder, private loginService: LoginService) { }
 
   ngOnInit() {
@@ -21,6 +19,4 @@ export class LoginComponent implements OnInit {
       password: this.formBuilder.control('',[Validators.required, Validators.minLength(6)])
     })
   }
-
-
 }

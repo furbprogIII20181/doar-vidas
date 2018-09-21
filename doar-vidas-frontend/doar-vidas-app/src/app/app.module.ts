@@ -6,20 +6,23 @@ import {ROUTES} from './app.route';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatIconModule, MatMenuModule, MatCardModule, MatToolbarModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatDividerModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatIconModule, MatMenuModule, MatCardModule, MatToolbarModule, MatSidenavModule, MatSelectModule, MatFormFieldModule, MatRadioModule, MatInputModule, MatDividerModule} from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginService } from './login/login.service';
+import { LoginService } from './services/login.service';
 import { HttpClientModule } from "@angular/common/http";
+import { RegisterComponent } from './register/register.component';
+import { StatesService } from './services/states.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MenuComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -34,11 +37,13 @@ import { HttpClientModule } from "@angular/common/http";
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule,
+    MatRadioModule,
+    MatSelectModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [LoginService],
+  providers: [LoginService, StatesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
