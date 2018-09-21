@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 
 /**
@@ -13,23 +13,17 @@ import javax.persistence.OneToMany;
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */
-@Entity
+@MappedSuperclass
 public class User extends BasicEntity {
 
-	@Column(nullable=false)
+	@Column(nullable=false, unique=true)
     private String email;
 	
 	@Column(nullable=false)
 	private String password;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Role> roles;
-
-	public User(String email, String password, List<Role> roles) {
-		this.email = email;
-		this.password = password;
-		this.roles = roles;
-	}
+	private List<RoleEntity> roles;
 
 	public String getEmail() {
 		return email;
@@ -47,11 +41,11 @@ public class User extends BasicEntity {
 		this.password = password;
 	}
 
-	public List<Role> getRoles() {
+	public List<RoleEntity> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<Role> roles) {
+	public void setRoles(List<RoleEntity> roles) {
 		this.roles = roles;
 	}
 	

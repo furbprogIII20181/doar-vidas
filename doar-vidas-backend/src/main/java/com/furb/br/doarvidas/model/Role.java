@@ -1,23 +1,18 @@
 package com.furb.br.doarvidas.model;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.MappedSuperclass;
 
 /**
  * Representa as permissões
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */
-@Entity
-public class Role extends BasicEntity {
+@MappedSuperclass
+public abstract class Role extends BasicEntity {
 
 	@Column(nullable=false)
 	private String name;
-
-	public Role(String name) {
-		super();
-		this.name = name;
-	}
 
 	public String getName() {
 		return name;

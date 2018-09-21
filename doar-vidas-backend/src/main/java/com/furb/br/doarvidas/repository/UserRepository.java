@@ -2,15 +2,15 @@ package com.furb.br.doarvidas.repository;
 
 import java.util.Optional;
 
-import com.furb.br.doarvidas.model.User;
+import com.furb.br.doarvidas.model.UserEntity;
 
 /**
- * Repositório de {@link User}
+ * Repositório de {@link UserEntity}
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */
-public interface UserRepository extends BasicRepository<User> {
+public interface UserRepository extends BasicRepository<UserEntity> {
 
-	Optional<User> findByEmail(String email);
+	Optional<UserEntity> findByEmail(String email);
 	
 }
