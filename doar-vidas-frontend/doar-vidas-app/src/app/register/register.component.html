@@ -26,13 +26,16 @@
             <input matInput formControlName="cpfCnpj" placeholder="Cpf" autocomplete="off">
             <mat-error *ngIf="!registerForm.get('cpfCnpj').valid && registerForm.get('cpfCnpj').dirty">CPF ou CNPJ inválido.</mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <!-- <mat-form-field>
           <mat-select placeholder="Estado" formControlName="uf">
             <mat-option *ngFor="let state of states" [value]="state.uf">
               {{state.name}}
             </mat-option>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
+        <mat-form-field>
+          <input matInput formControlName="uf" placeholder="Estado" autocomplete="off" [value]="states?.name">
+      </mat-form-field>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button>Ok</button>

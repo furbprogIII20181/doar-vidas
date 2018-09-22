@@ -12,11 +12,19 @@ export class StatesService {
 
   constructor(private http: HttpClient) { }
 
-  getStates(): Observable<State[]> {
-    return this.http.get<State[]>(environment.api.states).pipe(
-      map((res: State[]) => {
-        return res;
-      })
-    )
+  getStates(): Observable<State> {
+    // return this.http.get<State[]>(environment.api.states).pipe(
+    //   map((res: State[]) => {
+    //     return res;
+    //   })
+    // )
+    return this.http.get<State>(environment.api.states);
   }
+  // getStates(): Observable<State[]> {
+  //   return this.http.get<State[]>(environment.api.states).pipe(
+  //     map((res: State[]) => {
+  //       return res.states
+  //     }
+  //   )
+  // }
 }

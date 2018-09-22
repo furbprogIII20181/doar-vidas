@@ -20,7 +20,8 @@ export class RegisterComponent implements OnInit {
     {value: 'pj', label: 'Instituição'}
   ]
 
-  states: State[]
+  // states: State[]
+  states: State
 
   constructor(private formBuilder: FormBuilder, private statesService: StatesService) { }
 
@@ -38,10 +39,8 @@ export class RegisterComponent implements OnInit {
       confirmPassword: this.formBuilder.control('', [Validators.required, Validators.minLength(6)]),
     }, {validator: RegisterComponent.equalsTo})
 
-    this.statesService.getStates().subscribe((res: any) => {
-      console.log(res)
-      // this.states = res
-    });
+    
+    this.getStates()
   }
 
   static equalsTo(group: AbstractControl): {[key:string]: boolean} {
@@ -58,5 +57,16 @@ export class RegisterComponent implements OnInit {
 
     return undefined
   }
+
+  getStates(): void {
+    // return this.statesService.getStates().subscribe((res: any) => res.states);
+    this.statesService.getStates()
+    // clone the data object, using its known Config shape
+    .subscribe((data: State) => this.states = { ...data });
+  }
+
+  // getStates(): void {
+  //   this.statesService.getStates().subscribe((response: State[]) => this.states = {... response})
+  // }
 
 }

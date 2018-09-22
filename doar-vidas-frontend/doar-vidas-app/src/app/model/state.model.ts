@@ -1,4 +1,7 @@
 export interface State {
-    uf: string,
-    name: string
+    states: {
+        uf: string,
+        name: string
+    }
+    
 }
