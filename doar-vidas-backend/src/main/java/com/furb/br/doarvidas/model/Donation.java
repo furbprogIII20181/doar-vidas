@@ -3,41 +3,40 @@ package com.furb.br.doarvidas.model;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.MappedSuperclass;
 
 /**
  * Representa uma doação
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */
-@Entity
-public class Donation extends BasicEntity {
+@MappedSuperclass
+public abstract class Donation extends BasicEntity {
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	private Donator donator;
+	private DonatorEntity donator;
 	
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	private Institution institution;
+	private InstitutionEntity institution;
 	
 	@Column(nullable = false)
 	private Date date;
 
-	public Donator getDonator() {
+	public DonatorEntity getDonator() {
 		return donator;
 	}
 
-	public void setDonator(Donator donator) {
+	public void setDonator(DonatorEntity donator) {
 		this.donator = donator;
 	}
 
-	public Institution getInstitution() {
+	public InstitutionEntity getInstitution() {
 		return institution;
 	}
 
-	public void setInstitution(Institution institution) {
+	public void setInstitution(InstitutionEntity institution) {
 		this.institution = institution;
 	}
 

@@ -1,20 +1,15 @@
 package com.furb.br.doarvidas.model;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.MappedSuperclass;
 
 /**
  * Representa uma instituição doação (Hemocentro)
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */
-@DiscriminatorColumn(name = "tipo", length = 1, discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("I")
-@Entity
-public class Institution extends Person {
+@MappedSuperclass
+public abstract class Institution extends Person {
 
 	@Column(nullable = false)
 	private Long cnpj;

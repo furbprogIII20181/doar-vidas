@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */
 @MappedSuperclass
-public class User extends BasicEntity {
+public abstract class User extends BasicEntity {
 
 	@Column(nullable=false, unique=true)
     private String email;

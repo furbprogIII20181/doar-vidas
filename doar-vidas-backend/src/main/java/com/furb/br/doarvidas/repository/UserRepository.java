@@ -5,7 +5,7 @@ import java.util.Optional;
 import com.furb.br.doarvidas.model.UserEntity;
 
 /**
- * Repositório de {@link UserEntity}
+ * Repository of {@link UserEntity}
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */

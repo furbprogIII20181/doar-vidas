@@ -1,22 +1,21 @@
 package com.furb.br.doarvidas.model;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.MappedSuperclass;
 
 /**
  * Representa uma solicitação de doação
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */
-@Entity
-public class Solicitation extends BasicEntity {
+@MappedSuperclass
+public abstract class Solicitation extends BasicEntity {
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	private Institution institution;
+	private InstitutionEntity institution;
 	
 	@Enumerated
 	@Column(nullable = false)
@@ -25,11 +24,11 @@ public class Solicitation extends BasicEntity {
 	@Column(nullable = false)
 	private Double quantity;
 
-	public Institution getInstitution() {
+	public InstitutionEntity getInstitution() {
 		return institution;
 	}
 
-	public void setInstitution(Institution institution) {
+	public void setInstitution(InstitutionEntity institution) {
 		this.institution = institution;
 	}
 

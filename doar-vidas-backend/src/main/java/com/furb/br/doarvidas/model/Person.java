@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
  */
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @Entity
-public class Person extends BasicEntity {
+public abstract class Person extends BasicEntity {
 	
 	@Column(nullable = false)
 	private String name;
