@@ -23,7 +23,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .and()
             .authorizeRequests()
             	// These routes don't need authentication
-                .antMatchers("/","/register","/login").permitAll()
+                .antMatchers("/rest/public/**").permitAll()
                 // These needs authentication
                 .antMatchers("/rest/private/**").authenticated();
     }
