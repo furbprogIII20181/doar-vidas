@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   api: {
-    // states: "http://www.mocky.io/v2/5ba64a653200006600963d74"
-    states: "http://www.mocky.io/v2/5ba64cb33200005600963d75"
+    states: "http://www.mocky.io/v2/5ba64a653200006600963d74"
+    // states: "http://www.mocky.io/v2/5ba64cb33200005600963d75"
   }
 };
 
