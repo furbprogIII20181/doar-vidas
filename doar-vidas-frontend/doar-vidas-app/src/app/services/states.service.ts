@@ -12,9 +12,6 @@ export class StatesService {
 
   constructor(private http: HttpClient) { }
 
-  // getStates(): Observable<State> {
-  //   return this.http.get<State>(environment.api.states);
-  // }
   getStates(): Observable<Array<State>> {
     return this.http.get<Array<State>>(environment.api.states).pipe(
       map((res: Array<State>) => {
