@@ -1,19 +1,28 @@
-package com.furb.br.doarvidas.model;
+package com.furb.br.doarvidas.model.pojo;
+
+import java.util.List;
+
+import com.furb.br.doarvidas.model.Person;
+import com.furb.br.doarvidas.model.entities.RoleEntity;
 
 /**
- * {@link Person} pojo
+ * Pojo for {@link Person}
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */
-public class PersonPojo extends BasicPojo {
+public abstract class PersonPojo extends BasicPojo {
 
 	private String name;
 	private String city;
 	private String state;
 	private String tipo;
 	private String phone;
-	private UserEntity user;
 	private String description;
+	
+	//User's informations
+	private String email;
+	private String password;
+	private List<RoleEntity> roles;
 
 	public String getName() {
 		return name;
@@ -55,20 +64,36 @@ public class PersonPojo extends BasicPojo {
 		this.phone = phone;
 	}
 
-	public UserEntity getUser() {
-		return user;
-	}
-
-	public void setUser(UserEntity user) {
-		this.user = user;
-	}
-
 	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<RoleEntity> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<RoleEntity> roles) {
+		this.roles = roles;
 	}
 
 }

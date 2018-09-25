@@ -2,7 +2,7 @@ package com.furb.br.doarvidas.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.furb.br.doarvidas.model.BasicEntity;
+import com.furb.br.doarvidas.model.entities.BasicEntity;
 
 /**
  * Repositório de dados base da aplicação

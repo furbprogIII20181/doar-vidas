@@ -3,8 +3,10 @@ package com.furb.br.doarvidas.model;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
+import com.furb.br.doarvidas.model.entities.BasicEntity;
+
 /**
- * Representa as permissões
+ * Represents the Roles that each user has access
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */

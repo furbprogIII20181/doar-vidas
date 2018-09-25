@@ -7,8 +7,11 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
+import com.furb.br.doarvidas.model.entities.BasicEntity;
+import com.furb.br.doarvidas.model.entities.UserEntity;
+
 /**
- * Representa uma Pessoa
+ * Represents a Person
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */

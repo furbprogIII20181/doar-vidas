@@ -8,8 +8,11 @@ import javax.persistence.FetchType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 
+import com.furb.br.doarvidas.model.entities.BasicEntity;
+import com.furb.br.doarvidas.model.entities.RoleEntity;
+
 /**
- * Representa um Usuário
+ * Represents an User
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */

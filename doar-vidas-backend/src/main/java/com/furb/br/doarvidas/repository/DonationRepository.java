@@ -1,6 +1,6 @@
 package com.furb.br.doarvidas.repository;
 
-import com.furb.br.doarvidas.model.DonationEntity;
+import com.furb.br.doarvidas.model.entities.DonationEntity;
 
 /**
  * Repository of {@link DonationEntity}  

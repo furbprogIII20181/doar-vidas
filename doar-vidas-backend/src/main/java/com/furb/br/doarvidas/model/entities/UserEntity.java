@@ -1,8 +1,10 @@
-package com.furb.br.doarvidas.model;
+package com.furb.br.doarvidas.model.entities;
 
 import java.util.List;
 
 import javax.persistence.Entity;
+
+import com.furb.br.doarvidas.model.User;
 
 /**
  * 

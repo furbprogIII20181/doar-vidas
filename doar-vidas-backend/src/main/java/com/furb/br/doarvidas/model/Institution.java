@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 /**
- * Representa uma instituição doação (Hemocentro)
+ * Represents an Blood Donation Institution (Hemocentro)
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */

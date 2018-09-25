@@ -1,7 +1,7 @@
 package com.furb.br.doarvidas.repository;
 
 import com.furb.br.doarvidas.model.Solicitation;
-import com.furb.br.doarvidas.model.SolicitationEntity;
+import com.furb.br.doarvidas.model.entities.SolicitationEntity;
 
 /**
  * Repository of {@link Solicitation}

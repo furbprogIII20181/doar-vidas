@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.furb.br.doarvidas.model.RoleEntity;
-import com.furb.br.doarvidas.model.UserEntity;
+import com.furb.br.doarvidas.model.entities.RoleEntity;
+import com.furb.br.doarvidas.model.entities.UserEntity;
 import com.furb.br.doarvidas.services.UserService;
 
 @SpringBootApplication
@@ -23,7 +23,8 @@ public class DoarVidasApplication {
 	@Bean
     public CommandLineRunner setupDefaultUser(UserService service) {
         return args -> {
-            service.save(new UserEntity("user", "user", Arrays.asList(new RoleEntity("USER"))));
+        	// Set the default user
+            service.save(new UserEntity("doar-vidas", "doar-vidas", Arrays.asList(new RoleEntity("USER"))));
         };
     }
     

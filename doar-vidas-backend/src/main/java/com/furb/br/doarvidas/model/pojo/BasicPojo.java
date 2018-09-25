@@ -1,6 +1,7 @@
-package com.furb.br.doarvidas.model;
+package com.furb.br.doarvidas.model.pojo;
 
 /**
+ * Represents a basic Pojo
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */

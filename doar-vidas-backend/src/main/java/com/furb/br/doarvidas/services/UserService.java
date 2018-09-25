@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.furb.br.doarvidas.model.UserEntity;
+import com.furb.br.doarvidas.model.entities.UserEntity;
 import com.furb.br.doarvidas.repository.UserRepository;
 
 @Service
@@ -16,9 +16,9 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public void save(UserEntity user){
+    public UserEntity save(UserEntity user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        repo.save(user);
+        return repo.save(user);
     }
 
 }

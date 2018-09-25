@@ -2,7 +2,7 @@ package com.furb.br.doarvidas.repository;
 
 import java.util.Optional;
 
-import com.furb.br.doarvidas.model.UserEntity;
+import com.furb.br.doarvidas.model.entities.UserEntity;
 
 /**
  * Repository of {@link UserEntity}

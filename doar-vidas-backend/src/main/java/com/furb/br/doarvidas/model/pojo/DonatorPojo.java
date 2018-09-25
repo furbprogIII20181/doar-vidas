@@ -1,4 +1,7 @@
-package com.furb.br.doarvidas.model;
+package com.furb.br.doarvidas.model.pojo;
+
+import com.furb.br.doarvidas.model.domain.BloodType;
+import com.furb.br.doarvidas.model.entities.DonatorEntity;
 
 /**
  * Pojo for {@link DonatorEntity}

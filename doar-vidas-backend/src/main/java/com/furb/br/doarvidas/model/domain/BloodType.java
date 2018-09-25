@@ -1,4 +1,4 @@
-package com.furb.br.doarvidas.model;
+package com.furb.br.doarvidas.model.domain;
 
 import javax.persistence.EnumType;
 

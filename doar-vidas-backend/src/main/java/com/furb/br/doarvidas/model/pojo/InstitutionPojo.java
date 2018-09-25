@@ -1,6 +1,9 @@
-package com.furb.br.doarvidas.model;
+package com.furb.br.doarvidas.model.pojo;
+
+import com.furb.br.doarvidas.model.entities.InstitutionEntity;
 
 /**
+ * Pojo for {@link InstitutionEntity}
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */

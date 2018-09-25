@@ -6,8 +6,12 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
+import com.furb.br.doarvidas.model.domain.BloodType;
+import com.furb.br.doarvidas.model.entities.BasicEntity;
+import com.furb.br.doarvidas.model.entities.InstitutionEntity;
+
 /**
- * Representa uma solicitação de doação
+ * Represents a solicitation of a {@link Donation}
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */

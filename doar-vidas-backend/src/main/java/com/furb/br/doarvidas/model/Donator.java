@@ -4,8 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 
+import com.furb.br.doarvidas.model.domain.BloodType;
+
 /**
- * Representa um Doador
+ * Represents a Donator
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */

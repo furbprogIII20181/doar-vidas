@@ -1,6 +1,6 @@
 package com.furb.br.doarvidas.repository;
 
-import com.furb.br.doarvidas.model.RoleEntity;
+import com.furb.br.doarvidas.model.entities.RoleEntity;
 
 /**
  * Repository of {@link RoleEntity}
