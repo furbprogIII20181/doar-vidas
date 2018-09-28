@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class Institution extends Person {
 
-	@Column(nullable = false)
+	@Column
 	private Long cnpj;
 
 	public Long getCnpj() {

@@ -14,11 +14,11 @@ import com.furb.br.doarvidas.model.domain.BloodType;
 @MappedSuperclass
 public abstract class Donator extends Person {
 
-	@Column(nullable = false)
+	@Column
 	private Long cpf;
 	
 	@Enumerated
-	@Column(nullable = false)
+	@Column
 	private BloodType bloodType;
 
 	public Long getCpf() {
