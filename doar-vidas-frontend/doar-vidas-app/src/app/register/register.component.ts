@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { State } from '../model/state.model';
 import { StatesService } from '../services/states.service';
 import { BloodType } from '../model/blood.type.model';
+import { RegisterService } from '../services/register.service';
+import { Donator } from '../model/donator.model';
+import { Institution } from '../model/institution.model';
 
 @Component({
   selector: 'app-register',
@@ -28,13 +31,15 @@ export class RegisterComponent implements OnInit {
     {code: 'ONEG', description: 'O-'}
   ]
 
+  labelCpf = "* Cpf"
+
   statesObject: Array<State>
 
-  constructor(private formBuilder: FormBuilder, private statesService: StatesService) { }
+  constructor(private formBuilder: FormBuilder, private statesService: StatesService, private registerService: RegisterService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      firstname: this.formBuilder.control('',[Validators.required, Validators.minLength(3)]),
+      name: this.formBuilder.control('',[Validators.required, Validators.minLength(3)]),
       lastname: this.formBuilder.control('',[Validators.required, Validators.minLength(3)]),
       personType: this.formBuilder.control('D',[Validators.required]),
       email: this.formBuilder.control('', [Validators.required, Validators.email]),
@@ -70,13 +75,34 @@ export class RegisterComponent implements OnInit {
     this.registerForm.get('personType').valueChanges.subscribe(val => {
       if (val == 'D') {
         this.registerForm.get('cpfCnpj').setValidators(Validators.pattern(this.cpfPattern))
+        this.labelCpf = "* Cpf"
       } else {
         this.registerForm.get('cpfCnpj').setValidators(Validators.pattern(this.cnpjPattern))
+        this.labelCpf = "* Cnpj"
       }
     });
   }
 
   getStates(): void {
     this.statesService.getStates().subscribe(response => this.statesObject = {... response})
+  }
+
+  onSubmit() {
+    if (this.registerForm.get('bloodType').value.length) {
+      this.registerDonator(this.registerForm.value)
+    } else {
+      this.registerInstitution(this.registerForm.value)
+    }
+    return false
+  }
+
+  registerDonator(donator: Donator) {
+    let registeredDonator = undefined
+    this.registerService.registerDonator(donator).subscribe(response => registeredDonator = response)
+    console.log(registeredDonator)
+  }
+
+  registerInstitution(institution: Institution) {
+    
   }
 }

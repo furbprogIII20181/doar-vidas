@@ -1,0 +1,37 @@
+section.register-block {
+    max-width: 50%;
+    margin:30px auto;
+}
+.mat-card-header .mat-card-title {
+    font-size:22px;
+    color:#f44336;
+}
+.mat-card-header .mat-card-title h1 {
+    margin-top:0;
+    font-weight:400;
+}
+.field .mat-form-field {
+    width: 100%;
+}
+.field {
+    margin:10px 0;
+}
+.field-person-type {
+    display: flex;
+    justify-content: center;
+}
+.field-person-type .mat-radio-button {
+    margin:0 10px;
+}
+div.mat-card-header-text {
+    width:100%;
+    text-align: center;
+}
+.register-actions {
+    margin:0 2px;
+    display: flex;
+    justify-content: space-between
+}
+.register-actions .button {
+    width: 49%;
+}
