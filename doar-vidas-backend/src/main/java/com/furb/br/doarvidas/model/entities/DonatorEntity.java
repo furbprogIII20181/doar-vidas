@@ -19,13 +19,13 @@ public class DonatorEntity extends Donator {
 
 	public DonatorEntity(DonatorPojo pojo, UserEntity user) {
 		this.setName(pojo.getName());
+		this.setLastName(pojo.getLastName());
 		this.setBloodType(pojo.getBloodType());
 		this.setCity(pojo.getCity());
 		this.setCpf(pojo.getCpf());
 		this.setDescription(pojo.getDescription());
 		this.setPhone(pojo.getPhone());
 		this.setState(pojo.getState());
-		this.setTipo(pojo.getTipo());
 		this.setUser(user);
 	}
 	

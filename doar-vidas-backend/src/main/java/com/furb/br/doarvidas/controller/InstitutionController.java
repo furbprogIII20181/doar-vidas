@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +22,7 @@ import com.furb.br.doarvidas.services.UserService;
  * @author marcelo.wippel
  */
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/rest/public/institution")
 public class InstitutionController {
 
@@ -31,7 +33,7 @@ public class InstitutionController {
 	private UserService service;
 	
 	@RequestMapping(method = RequestMethod.POST, value = "save", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> save(@RequestBody InstitutionPojo institution){
+    public ResponseEntity<?> save(@RequestBody InstitutionPojo institution) {
 		UserEntity savedUser = service.save(new UserEntity(institution.getEmail(), institution.getPassword(), institution.getRoles()));
 		InstitutionEntity savedInstitution = institutionRepo.save(new InstitutionEntity(institution, savedUser));
     	return new ResponseEntity<>(savedInstitution, HttpStatus.OK);

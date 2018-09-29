@@ -13,9 +13,9 @@ import com.furb.br.doarvidas.model.entities.RoleEntity;
 public abstract class PersonPojo extends BasicPojo {
 
 	private String name;
+	private String lastName;
 	private String city;
 	private String state;
-	private String tipo;
 	private String phone;
 	private String description;
 	
@@ -30,6 +30,14 @@ public abstract class PersonPojo extends BasicPojo {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getCity() {
@@ -46,14 +54,6 @@ public abstract class PersonPojo extends BasicPojo {
 
 	public void setState(String state) {
 		this.state = state;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 
 	public String getPhone() {

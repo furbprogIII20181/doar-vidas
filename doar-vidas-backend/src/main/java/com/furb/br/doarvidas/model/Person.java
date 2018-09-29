@@ -23,13 +23,13 @@ public abstract class Person extends BasicEntity {
 	private String name;
 	
 	@Column(nullable = false)
+	private String lastName;
+	
+	@Column(nullable = false)
 	private String city;
 	
 	@Column(nullable = false)
 	private String state;
-	
-	@Column(insertable=false, updatable=false)
-	private String tipo;
 	
 	/**
 	 * Contém o DDD+Telefone
@@ -49,6 +49,14 @@ public abstract class Person extends BasicEntity {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getCity() {
@@ -89,14 +97,6 @@ public abstract class Person extends BasicEntity {
 
 	public void setUser(UserEntity user) {
 		this.user = user;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 
 }
