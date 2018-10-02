@@ -7,7 +7,7 @@ export const environment = {
   api: {
     states: "http://www.mocky.io/v2/5ba64a653200006600963d74",
     // states: "http://www.mocky.io/v2/5ba64cb33200005600963d75",
-    register: "http://10.13.34.249:8080/rest/public/donator/save"
+    register: "http://localhost:8080/rest/public/donator/save"
   }
 };
 

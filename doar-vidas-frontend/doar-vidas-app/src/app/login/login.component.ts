@@ -10,6 +10,8 @@ import { LoginService } from '../services/login.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
+  
+  hide = true;
 
   constructor(private formBuilder: FormBuilder, private loginService: LoginService) { }
 
