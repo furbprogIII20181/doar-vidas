@@ -1,5 +1,9 @@
 package com.furb.br.doarvidas.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -34,9 +38,20 @@ public class DonatorController {
 	
 	@RequestMapping(method = RequestMethod.POST, value = "save", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> save(@RequestBody DonatorPojo donator){
+		// Salva o usuário para poder salvar o Donator
 		UserEntity savedUser = service.save(new UserEntity(donator.getEmail(), donator.getPassword(), donator.getRoles()));
+		// Salva o donator
 		DonatorEntity savedDonator = donatorRepo.save(new DonatorEntity(donator, savedUser));
     	return new ResponseEntity<>(savedDonator, HttpStatus.OK);
+    }
+	
+	@RequestMapping(method = RequestMethod.POST, value = "listAll", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> listAll(){
+		Iterable<DonatorEntity> allDonators = donatorRepo.findAll();
+		List<DonatorEntity> donators = StreamSupport
+			    .stream(allDonators.spliterator(), false)
+			    .collect(Collectors.toList());
+    	return new ResponseEntity<>(donators, HttpStatus.OK);
     }
 
 }

@@ -13,6 +13,20 @@ public class DonatorPojo extends PersonPojo {
 	private Long cpf;
 	private BloodType bloodType;
 
+	public DonatorPojo() {
+	}
+
+	public DonatorPojo(DonatorEntity entity) {
+		this.setName(entity.getName());
+		this.setLastName(entity.getLastName());
+		this.setBloodType(entity.getBloodType());
+		this.setCity(entity.getCity());
+		this.setCpf(entity.getCpf());
+		this.setDescription(entity.getDescription());
+		this.setPhone(entity.getPhone());
+		this.setState(entity.getState());
+	}
+	
 	public Long getCpf() {
 		return cpf;
 	}

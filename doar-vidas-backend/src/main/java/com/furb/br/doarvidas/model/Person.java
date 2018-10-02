@@ -40,6 +40,7 @@ public abstract class Person extends BasicEntity {
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
 	private UserEntity user;
 	
+	@Column
 	private String description;
 
 	

@@ -13,7 +13,7 @@ import com.furb.br.doarvidas.model.entities.RoleEntity;
 public abstract class PersonPojo extends BasicPojo {
 
 	private String name;
-	private String lastName;
+	private String lastName = "";
 	private String city;
 	private String state;
 	private String phone;
