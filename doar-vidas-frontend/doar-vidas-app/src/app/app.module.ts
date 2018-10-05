@@ -15,6 +15,8 @@ import { LoginService } from './services/login.service';
 import { HttpClientModule } from "@angular/common/http";
 import { RegisterComponent } from './register/register.component';
 import { StatesService } from './services/states.service';
+import { SolicitationsComponent } from './solicitations/solicitations.component';
+import { SolicitationComponent } from './solicitations/solicitation/solicitation.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { StatesService } from './services/states.service';
     HomeComponent,
     MenuComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SolicitationsComponent,
+    SolicitationComponent
   ],
   imports: [
     BrowserModule,

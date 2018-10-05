@@ -21,4 +21,14 @@ export class LoginComponent implements OnInit {
       password: this.formBuilder.control('',[Validators.required, Validators.minLength(6)])
     })
   }
+
+  loginAction(username: string, password:string) {
+    let data = {
+      username: username,
+      password: password
+    }
+    this.loginService.loginAction(data).subscribe(response => {
+      console.log(response)
+    })
+  }
 }

@@ -7,6 +7,7 @@ import { BloodType } from '../model/blood.type.model';
 import { RegisterService } from '../services/register.service';
 import { Donator } from '../model/donator.model';
 import { Institution } from '../model/institution.model';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-register',
@@ -43,7 +44,8 @@ export class RegisterComponent implements OnInit {
 
   statesObject: Array<State>
 
-  constructor(private formBuilder: FormBuilder, private statesService: StatesService, private registerService: RegisterService,private location: Location) { }
+  constructor(private formBuilder: FormBuilder, private statesService: StatesService,
+     private registerService: RegisterService,private location: Location, private loginService: LoginService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -118,6 +120,16 @@ export class RegisterComponent implements OnInit {
 
   registerInstitution(institution: Institution) {
     
+  }
+
+  loginAction(username: string, password:string) {
+    let data = {
+      username: username,
+      password: password
+    }
+    this.loginService.loginAction(data).subscribe(response => {
+      console.log(response)
+    })
   }
 
   cancel() {
