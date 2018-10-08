@@ -33,13 +33,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
-                .inMemory()
-                .withClient("doar-vidas")
-                .authorizedGrantTypes("password")
-                .authorities("ROLE_USER")
-                .scopes("all")
-                .accessTokenValiditySeconds(5000)
-                .secret(passwordEncoder.encode("doar-vidas-password"));
+	        .inMemory()
+	        .withClient("doar-vidas")
+	        .authorizedGrantTypes("password")
+	        .authorities("USER")
+	        .scopes("all")
+	        .resourceIds("oauth2-resource")
+	        .accessTokenValiditySeconds(5000)
+	        .secret(passwordEncoder.encode("doar-vidas-password"));
     }
 
     @Override
