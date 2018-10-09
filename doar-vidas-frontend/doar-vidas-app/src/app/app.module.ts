@@ -6,7 +6,7 @@ import {ROUTES} from './app.route';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatIconModule, MatMenuModule, MatCardModule, MatToolbarModule, MatSidenavModule, MatSelectModule, MatFormFieldModule, MatRadioModule, MatInputModule, MatDividerModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatIconModule, MatMenuModule, MatCardModule, MatToolbarModule, MatSidenavModule, MatSelectModule, MatPaginatorModule, MatTableModule, MatSortModule, MatFormFieldModule, MatRadioModule, MatInputModule, MatDividerModule} from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
@@ -43,6 +43,9 @@ import { SolicitationComponent } from './solicitations/solicitation/solicitation
     MatDividerModule,
     MatRadioModule,
     MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES)
