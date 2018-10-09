@@ -8,6 +8,9 @@ import com.furb.br.doarvidas.model.pojo.SolicitationPojo;
 @Entity(name = "solicitation")
 public class SolicitationEntity extends Solicitation {
 
+	public SolicitationEntity() {
+	}
+
 	public SolicitationEntity(SolicitationPojo pojo, InstitutionEntity institution) {
 		this.setId(pojo.getId());
 		this.setBloodType(pojo.getBloodType());
