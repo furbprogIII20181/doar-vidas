@@ -1,7 +1,7 @@
 package com.furb.br.doarvidas.model.pojo;
 
 /**
- * Represents a basic Pojo
+ * Represents a basic Pojo (Plain old java object)
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */

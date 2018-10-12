@@ -9,8 +9,10 @@ import com.furb.br.doarvidas.model.Donation;
 @Entity(name = "donation")
 public class DonationEntity extends Donation {
 
+	/**
+	 * Default constructor
+	 */
 	public DonationEntity() {
-		
 	}
 
 	public DonationEntity(Date date, DonatorEntity donatorEntity, InstitutionEntity institutionEntity) {

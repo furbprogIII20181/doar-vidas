@@ -10,7 +10,6 @@ import com.furb.br.doarvidas.model.entities.DonatorEntity;
  */
 public class DonatorPojo extends PersonPojo {
 
-	private Long cpf;
 	private BloodType bloodType;
 
 	public DonatorPojo() {
@@ -21,21 +20,16 @@ public class DonatorPojo extends PersonPojo {
 		this.setLastName(entity.getLastName());
 		this.setBloodType(entity.getBloodType());
 		this.setCity(entity.getCity());
-		this.setCpf(entity.getCpf());
+		this.setCpfCnpj(entity.getCpfCnpj());
 		this.setDescription(entity.getDescription());
 		this.setPhone(entity.getPhone());
 		this.setState(entity.getState());
 	}
 	
-	public Long getCpf() {
-		return cpf;
-	}
-	public void setCpf(Long cpf) {
-		this.cpf = cpf;
-	}
 	public BloodType getBloodType() {
 		return bloodType;
 	}
+
 	public void setBloodType(BloodType bloodType) {
 		this.bloodType = bloodType;
 	}

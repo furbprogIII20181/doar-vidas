@@ -13,8 +13,11 @@ import com.furb.br.doarvidas.model.pojo.DonatorPojo;
 @Entity(name = "donator")
 public class DonatorEntity extends Donator {
 
+	/**
+	 * Default constructor
+	 */
 	public DonatorEntity() {
-		// Default constructor
+		
 	}
 
 	public DonatorEntity(DonatorPojo pojo, UserEntity user) {
@@ -22,7 +25,7 @@ public class DonatorEntity extends Donator {
 		this.setLastName(pojo.getLastName());
 		this.setBloodType(pojo.getBloodType());
 		this.setCity(pojo.getCity());
-		this.setCpf(pojo.getCpf());
+		this.setCpfCnpj(pojo.getCpfCnpj());
 		this.setDescription(pojo.getDescription());
 		this.setPhone(pojo.getPhone());
 		this.setState(pojo.getState());

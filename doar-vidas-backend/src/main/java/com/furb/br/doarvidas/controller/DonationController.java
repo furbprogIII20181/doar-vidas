@@ -1,15 +1,16 @@
 package com.furb.br.doarvidas.controller;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.furb.br.doarvidas.model.entities.DonationEntity;
@@ -28,7 +29,7 @@ import com.furb.br.doarvidas.repository.InstitutionRepository;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/rest/private/donation")
-public class DonationController {
+public class DonationController extends AbstractController<DonationPojo> {
 
 	@Autowired
 	private DonationRepository donationRepo;
@@ -38,12 +39,12 @@ public class DonationController {
 	
 	@Autowired
 	private InstitutionRepository institutionRepo;
-	
-	@RequestMapping(method = RequestMethod.POST, value = "save", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> save(@RequestBody DonationPojo donation){
-		// Busca o donator
+
+	@Override
+    public ResponseEntity<?> save(@RequestBody DonationPojo donation) {
+		// Find the donator
 		Optional<DonatorEntity> donator = donatorRepo.findById(donation.getDonatorID());
-		// Buscar a institution
+		// Find the institution
 		Optional<InstitutionEntity> institution = institutionRepo.findById(donation.getInstitutionID());
 		
 		if (donator.isPresent() && institution.isPresent()) {
@@ -51,7 +52,22 @@ public class DonationController {
 					.save(new DonationEntity(donation.getDate(), donator.get(), institution.get()));
 			return new ResponseEntity<>(savedDonation, HttpStatus.OK);
 		}
-		return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+	
+	@Override
+	public ResponseEntity<?> deleteById(Integer id) {
+		donationRepo.deleteById(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<?> listAll() {
+		Iterable<DonationEntity> allDonations = donationRepo.findAll();
+		List<DonationEntity> donations = StreamSupport
+			    .stream(allDonations.spliterator(), false)
+			    .collect(Collectors.toList());
+    	return new ResponseEntity<>(donations, HttpStatus.OK);
+	}
 	
 }

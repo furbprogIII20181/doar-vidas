@@ -9,8 +9,6 @@ import com.furb.br.doarvidas.model.entities.InstitutionEntity;
  */
 public class InstitutionPojo extends PersonPojo {
 
-	private Long cnpj;
-
 	public InstitutionPojo() {
 	}
 
@@ -21,15 +19,7 @@ public class InstitutionPojo extends PersonPojo {
 		this.setDescription(entity.getDescription());
 		this.setPhone(entity.getPhone());
 		this.setState(entity.getState());
-		this.setCnpj(entity.getCnpj());
-	}
-	
-	public Long getCnpj() {
-		return cnpj;
-	}
-
-	public void setCnpj(Long cnpj) {
-		this.cnpj = cnpj;
+		this.setCpfCnpj(entity.getCpfCnpj());
 	}
 	
 }

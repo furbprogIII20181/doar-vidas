@@ -2,6 +2,11 @@ package com.furb.br.doarvidas.model.pojo;
 
 import java.util.Date;
 
+/**
+ * Represents a Donation Pojo
+ * 
+ * @author Marcelo Wippel
+ */
 public class DonationPojo extends BasicPojo {
 
 	private Integer donatorID;

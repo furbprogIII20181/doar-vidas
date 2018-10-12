@@ -14,20 +14,9 @@ import com.furb.br.doarvidas.model.domain.BloodType;
 @MappedSuperclass
 public abstract class Donator extends Person {
 
-	@Column
-	private Long cpf;
-	
 	@Enumerated
 	@Column
 	private BloodType bloodType;
-
-	public Long getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(Long cpf) {
-		this.cpf = cpf;
-	}
 
 	public BloodType getBloodType() {
 		return bloodType;

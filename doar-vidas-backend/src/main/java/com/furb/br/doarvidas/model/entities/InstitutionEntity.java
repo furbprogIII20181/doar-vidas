@@ -13,12 +13,15 @@ import com.furb.br.doarvidas.model.pojo.InstitutionPojo;
 @Entity
 public class InstitutionEntity extends Institution {
 
+	/**
+	 * Default constructor
+	 */
 	public InstitutionEntity() {
-		// Default constructor
+
 	}
 
 	public InstitutionEntity(InstitutionPojo pojo, UserEntity user) {
-		this.setCnpj(pojo.getCnpj());
+		this.setCpfCnpj(pojo.getCpfCnpj());
 		this.setName(pojo.getName());
 		this.setLastName(pojo.getLastName());
 		this.setCity(pojo.getCity());

@@ -13,8 +13,11 @@ import com.furb.br.doarvidas.model.User;
 @Entity(name = "User")
 public class UserEntity extends User {
 
+	/**
+	 * Default constructor
+	 */
 	public UserEntity() {
-		//Default constructor
+
 	}
 	
 	public UserEntity(String email, String password, List<RoleEntity> roles) {

@@ -8,7 +8,11 @@ import com.furb.br.doarvidas.model.pojo.SolicitationPojo;
 @Entity(name = "solicitation")
 public class SolicitationEntity extends Solicitation {
 
+	/**
+	 * Default constructor
+	 */
 	public SolicitationEntity() {
+
 	}
 
 	public SolicitationEntity(SolicitationPojo pojo, InstitutionEntity institution) {

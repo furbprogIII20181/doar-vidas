@@ -18,6 +18,7 @@ public abstract class PersonPojo extends BasicPojo {
 	private String state;
 	private String phone;
 	private String description;
+	private Long cpfCnpj;
 	
 	//User's informations
 	private String email;
@@ -96,4 +97,12 @@ public abstract class PersonPojo extends BasicPojo {
 		this.roles = roles;
 	}
 
+	public Long getCpfCnpj() {
+		return cpfCnpj;
+	}
+
+	public void setCpfCnpj(Long cpfCnpj) {
+		this.cpfCnpj = cpfCnpj;
+	}
+	
 }

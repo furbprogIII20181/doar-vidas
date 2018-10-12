@@ -3,7 +3,7 @@ package com.furb.br.doarvidas.model.domain;
 import javax.persistence.EnumType;
 
 /**
- * Representa os tipos sanguíneos existentes, com o seu fator RH.
+ * Represents the blood types, with its RH Factor.
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */

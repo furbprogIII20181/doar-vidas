@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.furb.br.doarvidas.model.entities.BasicEntity;
 
 /**
- * Repositório de dados base da aplicação
+ * Base repository of the application, all repositories extends from this one
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */

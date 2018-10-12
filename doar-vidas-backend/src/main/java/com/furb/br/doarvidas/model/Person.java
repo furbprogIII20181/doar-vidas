@@ -43,6 +43,8 @@ public abstract class Person extends BasicEntity {
 	@Column
 	private String description;
 
+	@Column
+	private Long cpfCnpj;
 	
 	public String getName() {
 		return name;
@@ -98,6 +100,14 @@ public abstract class Person extends BasicEntity {
 
 	public void setUser(UserEntity user) {
 		this.user = user;
+	}
+
+	public Long getCpfCnpj() {
+		return cpfCnpj;
+	}
+
+	public void setCpfCnpj(Long cpfCnpj) {
+		this.cpfCnpj = cpfCnpj;
 	}
 
 }

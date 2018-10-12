@@ -1,6 +1,5 @@
 package com.furb.br.doarvidas.model;
 
-import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 /**
@@ -11,15 +10,4 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class Institution extends Person {
 
-	@Column
-	private Long cnpj;
-
-	public Long getCnpj() {
-		return cnpj;
-	}
-
-	public void setCnpj(Long cnpj) {
-		this.cnpj = cnpj;
-	}
-	
 }
