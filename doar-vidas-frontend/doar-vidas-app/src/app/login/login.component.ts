@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -23,12 +24,23 @@ export class LoginComponent implements OnInit {
   }
 
   loginAction(username: string, password:string) {
-    let data = {
-      username: username,
-      password: password
-    }
-    this.loginService.loginAction(data).subscribe(response => {
+
+    const body = new HttpParams()
+      .set(`username`, username)
+      .set(`password`, password)
+      .set(`grant_type`, `password`);
+    // let formData = new FormData();
+    // formData.append("username", username)
+    // formData.append("password", password)
+    // formData.append("grant_type", "password")
+    this.loginService.loginAction(body).subscribe(response => {
       console.log(response)
     })
+  }
+
+  onSubmit() {
+    let username = this.loginForm.get('email').value
+    let password = this.loginForm.get('password').value
+    this.loginAction(username, password)
   }
 }

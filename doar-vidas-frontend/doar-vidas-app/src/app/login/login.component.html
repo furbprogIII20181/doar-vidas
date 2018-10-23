@@ -6,7 +6,7 @@
       <!-- <div mat-card-avatar class="example-header-image"></div> -->
       <mat-card-title><h1>Faça Login</h1></mat-card-title>
     </mat-card-header>
-    <form [formGroup]="loginForm" novalidate>  
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>  
       <mat-card-content>
         <mat-form-field>
             <input matInput formControlName="email" placeholder="E-mail" autocomplete="off">
@@ -20,7 +20,7 @@
         <a class="forgot-pass-link" href="#">Esqueceu a senha?</a>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button color="warn" role="button"  (click)="onSubmit()">Entrar</button>
+        <button mat-flat-button color="warn" role="button">Entrar</button>
         <mat-divider></mat-divider>
       </mat-card-actions>
       <mat-card-actions>

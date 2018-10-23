@@ -9,12 +9,14 @@ import { Observable } from 'rxjs';
 export class LoginService {
     constructor(private http: HttpClient){}
 
-    loginAction(login:any): Observable<string> {
+    loginAction(login:any): Observable<any> {
+        console.log(login)
         const httpOptions = {
             headers: new HttpHeaders({
-                'Content-Type':  'application/json'
+                'Content-Type':  'application/x-www-form-urlencoded',
+                'Authorization': 'Basic ZG9hci12aWRhczpkb2FyLXZpZGFzLXBhc3N3b3Jk'
             })
         }
-        return this.http.post<string>(environment.api.login, JSON.stringify(login), httpOptions);
+        return this.http.post<any>(environment.api.login, login.toString(), httpOptions);
     }
  }
