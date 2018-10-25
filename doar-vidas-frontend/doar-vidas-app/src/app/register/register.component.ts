@@ -8,6 +8,8 @@ import { RegisterService } from '../services/register.service';
 import { Donator } from '../model/donator.model';
 import { Institution } from '../model/institution.model';
 import { LoginService } from '../services/login.service';
+import { HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -42,10 +44,15 @@ export class RegisterComponent implements OnInit {
 
   labelLastname = "* Sobrenome"
 
+  personInstitution = "I"
+  personDonator = "D"
+
   statesObject: Array<State>
 
   constructor(private formBuilder: FormBuilder, private statesService: StatesService,
-     private registerService: RegisterService,private location: Location, private loginService: LoginService) { }
+     private registerService: RegisterService,private location: Location, private loginService: LoginService,
+     private router: Router)
+  {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -102,34 +109,55 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    let cpfCnpj = this.registerForm.get('cpfCnpj').value
-    this.registerForm.get('cpfCnpj').setValue(cpfCnpj.replace(/\D/g,''))
-    if (this.registerForm.get('bloodType').value.length) {
-      this.registerDonator(this.registerForm.value)
-    } else {
-      this.registerInstitution(this.registerForm.value)
+    if (this.registerForm.valid) {
+      let cpfCnpj = this.registerForm.get('cpfCnpj').value
+      this.registerForm.get('cpfCnpj').setValue(cpfCnpj.replace(/\D/g,''))
+      if (this.registerForm.get('bloodType').value.length) {
+        this.registerDonator(this.registerForm.value)
+      } else {
+        this.registerInstitution(this.registerForm.value)
+      }
     }
     return false
   }
 
   registerDonator(donator: Donator) {
-    this.registerService.registerDonator(donator).subscribe(response => {
-      console.log(response,this.registerForm.get('email'),this.registerForm.get('password'))
-    })
+    this.registerService.registerDonator(donator).subscribe(
+      (data) => this.loginAction(this.registerForm.get('email').value,this.registerForm.get('password').value, this.personDonator),
+      (error) => this.handleError(error)
+    )
   }
 
   registerInstitution(institution: Institution) {
-    
+    this.registerService.registerInstitution(institution).subscribe(
+      (data) => this.loginAction(this.registerForm.get('email').value,this.registerForm.get('password').value, this.personInstitution),
+      (error) => this.handleError(error)
+    )
   }
 
-  loginAction(username: string, password:string) {
-    let data = {
-      username: username,
-      password: password
-    }
-    this.loginService.loginAction(data).subscribe(response => {
-      console.log(response)
-    })
+  loginAction(username: string, password:string, personType:string) {
+    const body = new HttpParams()
+      .set(`username`, username)
+      .set(`password`, password)
+      .set(`grant_type`, `password`);
+
+    this.loginService.loginAction(body).subscribe(
+      (data) => this.onSuccess(data, personType),
+      (error) => this.handleError(error)
+    )
+  }
+
+  onSuccess(data, personType) {
+    localStorage.setItem('user_token',data.access_token)
+    if (personType == this.personDonator) {
+      this.router.navigate(['/solicitations']);
+    } else {
+      // rota da instituicao
+    } 
+  }
+
+  handleError(error) {
+    console.log(error)
   }
 
   cancel() {

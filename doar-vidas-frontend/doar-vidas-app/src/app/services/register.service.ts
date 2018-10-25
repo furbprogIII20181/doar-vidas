@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { Institution } from '../model/institution.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,15 @@ export class RegisterService {
         'Content-Type':  'application/json'
       })
     }
-    return this.http.post<Donator>(environment.api.register, JSON.stringify(donator), httpOptions)
+    return this.http.post<Donator>(environment.api.registerDonator, JSON.stringify(donator), httpOptions)
+  }
+
+  registerInstitution(institution: Institution): Observable<Institution> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    }
+    return this.http.post<Institution>(environment.api.registerInstitution, JSON.stringify(institution), httpOptions)
   }
 }

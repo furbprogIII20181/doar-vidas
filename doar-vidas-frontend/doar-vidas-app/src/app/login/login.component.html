@@ -20,7 +20,7 @@
         <a class="forgot-pass-link" href="#">Esqueceu a senha?</a>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button color="warn" role="button">Entrar</button>
+        <button mat-flat-button color="warn" role="button" [disabled]="!this.loginForm.valid && this.loginForm.get('email').dirty">Entrar</button>
         <mat-divider></mat-divider>
       </mat-card-actions>
       <mat-card-actions>

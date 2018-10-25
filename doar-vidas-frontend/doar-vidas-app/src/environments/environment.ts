@@ -7,9 +7,9 @@ export const environment = {
   api: {
     states: "http://www.mocky.io/v2/5ba64a653200006600963d74",
     // states: "http://www.mocky.io/v2/5ba64cb33200005600963d75",
-    register: "http://localhost:8080/rest/public/donator/save",
+    registerDonator: "http://localhost:8080/rest/public/donator/save",
+    registerInstitution: "http://localhost:8080/rest/public/institution/save",
     login: "http://localhost:8080/oauth/token"
-    // login: "http://10.13.34.249:8080/oauth/token"
   }
 };
 
