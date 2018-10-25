@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   
   hide = true;
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService) { }
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -24,18 +25,24 @@ export class LoginComponent implements OnInit {
   }
 
   loginAction(username: string, password:string) {
-
     const body = new HttpParams()
       .set(`username`, username)
       .set(`password`, password)
       .set(`grant_type`, `password`);
-    // let formData = new FormData();
-    // formData.append("username", username)
-    // formData.append("password", password)
-    // formData.append("grant_type", "password")
-    this.loginService.loginAction(body).subscribe(response => {
-      console.log(response)
-    })
+
+    this.loginService.loginAction(body).subscribe(
+      (data) => this.onSuccess(data),
+      (error) => this.handleError(error)
+    )
+  }
+
+  onSuccess(data) {
+    localStorage.setItem('user_token',data.access_token)
+    this.router.navigate(['/solicitations']);
+  }
+
+  handleError(error) {
+    console.log(error)
   }
 
   onSubmit() {

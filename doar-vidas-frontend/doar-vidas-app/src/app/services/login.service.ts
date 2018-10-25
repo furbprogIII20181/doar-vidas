@@ -10,7 +10,6 @@ export class LoginService {
     constructor(private http: HttpClient){}
 
     loginAction(login:any): Observable<any> {
-        console.log(login)
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type':  'application/x-www-form-urlencoded',
