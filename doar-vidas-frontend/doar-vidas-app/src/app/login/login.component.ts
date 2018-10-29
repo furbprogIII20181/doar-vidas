@@ -40,12 +40,17 @@ export class LoginComponent implements OnInit {
 
   onSuccess(data) {
     localStorage.setItem('access_token',data.access_token)
-    const user: UserInfo = this.getUserByEmail(this.loginForm.get('username'))
-    if (user.type == 'D') {
-      this.router.navigate(['/solicitations']);
-    } else {
-      // rota de pj
-    }
+    this.globalService.getUserByEmail('empresa@teste.com.br').subscribe (
+      (data) => { 
+        localStorage.setItem('user_info', JSON.stringify(data))
+        if (data.type == 'D') {
+          this.router.navigate(['/solicitations']);
+        } else {
+          // rota de pj
+        }
+      },
+      (error) => this.handleError(error)
+    )
   }
 
   handleError(error) {

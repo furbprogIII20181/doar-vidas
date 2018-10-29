@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { environment } from '../../environments/environment';
 import { UserInfo } from './uset.info.model';
 
@@ -24,6 +24,9 @@ export class GlobalService {
         'Content-Type':  'application/json'
       })
     }
-    return this.http.post<UserInfo>(environment.api.getUserInfo + "?access_token=" + localStorage.getItem('access_token'), JSON.stringify(email), httpOptions)
+    const body = {
+      "email": email
+    }
+    return this.http.post<UserInfo>(environment.api.getUserInfo + "?access_token=" + localStorage.getItem('access_token'), body, httpOptions)
   }
 }

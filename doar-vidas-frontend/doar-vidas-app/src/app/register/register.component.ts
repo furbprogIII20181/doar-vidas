@@ -110,7 +110,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.registerForm.valid) {
+    // if (this.registerForm.valid) {
       let cpfCnpj = this.registerForm.get('cpfCnpj').value
       this.registerForm.get('cpfCnpj').setValue(cpfCnpj.replace(/\D/g,''))
       if (this.registerForm.get('bloodType').value.length) {
@@ -118,7 +118,7 @@ export class RegisterComponent implements OnInit {
       } else {
         this.registerInstitution(this.registerForm.value)
       }
-    }
+    // }
     return false
   }
 
@@ -150,8 +150,11 @@ export class RegisterComponent implements OnInit {
 
   onSuccess(data, personType) {
     localStorage.setItem('access_token',data.access_token)
-    const userInfo = this.globalService.getUserByEmail(this.registerForm.get('email').value)
-    localStorage.setItem('user_info', JSON.stringify(userInfo))
+    this.globalService.getUserByEmail('empresa@teste.com.br').subscribe (
+      (data) => localStorage.setItem('user_info', JSON.stringify(data)),
+      (error) => this.handleError(error)
+    )
+    
     if (personType == this.personDonator) {
       this.router.navigate(['/solicitations']);
     } else {
