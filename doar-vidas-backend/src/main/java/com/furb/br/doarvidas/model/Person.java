@@ -43,7 +43,7 @@ public abstract class Person extends BasicEntity {
 	@Column
 	private String description;
 
-	@Column
+	@Column(nullable = false)
 	private Long cpfCnpj;
 	
 	public String getName() {
