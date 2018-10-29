@@ -110,6 +110,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    // Verificar por que quando for instituição não está validando
     // if (this.registerForm.valid) {
       let cpfCnpj = this.registerForm.get('cpfCnpj').value
       this.registerForm.get('cpfCnpj').setValue(cpfCnpj.replace(/\D/g,''))
@@ -150,16 +151,17 @@ export class RegisterComponent implements OnInit {
 
   onSuccess(data, personType) {
     localStorage.setItem('access_token',data.access_token)
-    this.globalService.getUserByEmail('empresa@teste.com.br').subscribe (
-      (data) => localStorage.setItem('user_info', JSON.stringify(data)),
+    this.globalService.getUserByEmail(this.registerForm.get('email').value).subscribe (
+      (data) => {
+        localStorage.setItem('user_info', JSON.stringify(data))
+        if (personType == this.personDonator) {
+          this.router.navigate(['/solicitations']);
+        } else {
+          // rota da instituicao
+        } 
+      },
       (error) => this.handleError(error)
     )
-    
-    if (personType == this.personDonator) {
-      this.router.navigate(['/solicitations']);
-    } else {
-      // rota da instituicao
-    } 
   }
 
   handleError(error) {

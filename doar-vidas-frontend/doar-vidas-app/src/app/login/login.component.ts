@@ -4,7 +4,6 @@ import { LoginService } from '../services/login.service';
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { GlobalService } from '../services/global.service';
-import { UserInfo } from '../services/uset.info.model';
 
 @Component({
   selector: 'app-login',
@@ -40,7 +39,7 @@ export class LoginComponent implements OnInit {
 
   onSuccess(data) {
     localStorage.setItem('access_token',data.access_token)
-    this.globalService.getUserByEmail('empresa@teste.com.br').subscribe (
+    this.globalService.getUserByEmail(this.loginForm.get('email').value).subscribe (
       (data) => { 
         localStorage.setItem('user_info', JSON.stringify(data))
         if (data.type == 'D') {
