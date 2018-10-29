@@ -1,5 +1,8 @@
 package com.furb.br.doarvidas.repository;
 
+import java.util.Optional;
+
+import com.furb.br.doarvidas.model.User;
 import com.furb.br.doarvidas.model.entities.DonatorEntity;
 
 /**
@@ -9,4 +12,6 @@ import com.furb.br.doarvidas.model.entities.DonatorEntity;
  */
 public interface DonatorRepository extends BasicRepository<DonatorEntity> {
 
+	Optional<DonatorEntity> findByUser(User user);
+	
 }

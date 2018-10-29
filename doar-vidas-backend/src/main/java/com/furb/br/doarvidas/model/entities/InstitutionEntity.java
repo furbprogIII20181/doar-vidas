@@ -4,6 +4,7 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 import com.furb.br.doarvidas.model.Institution;
 import com.furb.br.doarvidas.model.pojo.InstitutionPojo;
@@ -29,6 +30,12 @@ public class InstitutionEntity extends Institution {
 		this.setPhone(pojo.getPhone());
 		this.setState(pojo.getState());
 		this.setUser(user);
+	}
+	
+	@Transient
+	public String getDiscriminatorValue(){
+	    DiscriminatorValue val = this.getClass().getAnnotation(DiscriminatorValue.class);
+	    return val == null ? null : val.value();
 	}
 	
 }
