@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { Solicitation } from '../model/solicitation.model';
+import { GlobalService } from '../services/global.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-solicitations',
@@ -40,9 +42,12 @@ export class SolicitationsComponent implements OnInit {
 
     solicitationsTable = new MatTableDataSource(this.exampleData);
 
-    constructor() { }
+    constructor(private globalService: GlobalService, private router: Router) { }
 
     ngOnInit() {
+        if (!this.globalService.getIsLoggedin()) {
+            this.router.navigate(['/login']);
+        }
         this.solicitationsTable.filterPredicate = (data: any, filter: string) => {
             var str = this.getStringObject(data);
             return str.toLowerCase().trim().includes(filter.toLowerCase().trim());
