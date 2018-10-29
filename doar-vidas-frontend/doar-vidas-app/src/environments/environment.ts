@@ -9,7 +9,8 @@ export const environment = {
     // states: "http://www.mocky.io/v2/5ba64cb33200005600963d75",
     registerDonator: "http://localhost:8080/rest/public/donator/save",
     registerInstitution: "http://localhost:8080/rest/public/institution/save",
-    login: "http://localhost:8080/oauth/token"
+    login: "http://localhost:8080/oauth/token",
+    getUserInfo: "http://localhost:8080/rest/private/user/findByEmail"
   }
 };
 

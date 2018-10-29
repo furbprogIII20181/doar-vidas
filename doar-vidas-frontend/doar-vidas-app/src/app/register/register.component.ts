@@ -10,6 +10,7 @@ import { Institution } from '../model/institution.model';
 import { LoginService } from '../services/login.service';
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { GlobalService } from '../services/global.service';
 
 @Component({
   selector: 'app-register',
@@ -51,7 +52,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private statesService: StatesService,
      private registerService: RegisterService,private location: Location, private loginService: LoginService,
-     private router: Router)
+     private router: Router, private globalService: GlobalService)
   {}
 
   ngOnInit() {
@@ -149,6 +150,8 @@ export class RegisterComponent implements OnInit {
 
   onSuccess(data, personType) {
     localStorage.setItem('access_token',data.access_token)
+    const userInfo = this.globalService.getUserByEmail(this.registerForm.get('email').value)
+    localStorage.setItem('user_info', JSON.stringify(userInfo))
     if (personType == this.personDonator) {
       this.router.navigate(['/solicitations']);
     } else {

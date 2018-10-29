@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { GlobalService } from '../services/global.service';
+import { UserInfo } from '../services/uset.info.model';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   
   hide = true;
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router, private globalService: GlobalService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -38,11 +40,23 @@ export class LoginComponent implements OnInit {
 
   onSuccess(data) {
     localStorage.setItem('access_token',data.access_token)
-    this.router.navigate(['/solicitations']);
+    const user: UserInfo = this.getUserByEmail(this.loginForm.get('username'))
+    if (user.type == 'D') {
+      this.router.navigate(['/solicitations']);
+    } else {
+      // rota de pj
+    }
   }
 
   handleError(error) {
     console.log(error)
+  }
+
+  getUserByEmail(email): any {
+    return this.globalService.getUserByEmail(email).subscribe(
+      (data) => data,
+      (error) => this.handleError(error)
+    )
   }
 
   onSubmit() {
