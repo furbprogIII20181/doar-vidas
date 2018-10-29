@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSuccess(data) {
-    localStorage.setItem('user_token',data.access_token)
+    localStorage.setItem('access_token',data.access_token)
     this.router.navigate(['/solicitations']);
   }
 

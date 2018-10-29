@@ -148,7 +148,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSuccess(data, personType) {
-    localStorage.setItem('user_token',data.access_token)
+    localStorage.setItem('access_token',data.access_token)
     if (personType == this.personDonator) {
       this.router.navigate(['/solicitations']);
     } else {
