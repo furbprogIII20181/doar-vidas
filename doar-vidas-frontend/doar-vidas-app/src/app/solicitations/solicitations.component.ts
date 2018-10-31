@@ -45,9 +45,9 @@ export class SolicitationsComponent implements OnInit {
     constructor(private globalService: GlobalService, private router: Router) { }
 
     ngOnInit() {
-        if (!this.globalService.getIsLoggedin()) {
+        /*if (!this.globalService.getIsLoggedin()) {
             this.router.navigate(['/login']);
-        }
+        }*/
         this.solicitationsTable.filterPredicate = (data: any, filter: string) => {
             var str = this.getStringObject(data);
             return str.toLowerCase().trim().includes(filter.toLowerCase().trim());
