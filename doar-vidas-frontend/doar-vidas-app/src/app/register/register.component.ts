@@ -157,7 +157,7 @@ export class RegisterComponent implements OnInit {
         if (personType == this.personDonator) {
           this.router.navigate(['/solicitations']);
         } else {
-          // rota da instituicao
+          this.router.navigate(['/donators']);
         } 
       },
       (error) => this.handleError(error)

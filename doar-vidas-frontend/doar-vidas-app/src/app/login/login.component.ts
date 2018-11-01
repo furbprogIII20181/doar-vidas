@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         if (data.type == 'D') {
           this.router.navigate(['/solicitations']);
         } else {
-          // rota de pj
+          this.router.navigate(['/donators']);
         }
       },
       (error) => this.handleError(error)
