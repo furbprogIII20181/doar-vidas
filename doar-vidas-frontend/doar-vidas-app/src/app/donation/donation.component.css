@@ -1,38 +1,55 @@
 .outerContainer {
-    width: 95%;
-    height: 90%;
-    margin: auto;
+  width: 90%;
+  margin: 30px auto 0;
 }
 
-.upperDiv {
-    height: 50%;
-    width: 100%;
-    float: left;
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .leftDiv {
-    height: 50%;
-    width: 50%;
-    float: left;
-    padding-top: 15px;
+  width: 50%;
+  padding-top: 15px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .rightDiv {
-    height: 50%;
-    width: 50%;
-    float: right;
-    padding-top: 15px;
+  width: 50%;
+  padding-top: 15px;
 }
 
 .iconDescription {
-    display: flex;
+  display: flex;
 }
 
 .iconImg {
-    height: 100%;
-    max-width: 300px;
+  max-width: 300px;
 }
 
 .institutionTitle {
-    margin-left: 15px;
+  margin-left: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.institutionSubTitle {
+  margin-left: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.datePicker {
+  width: 250px;
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
