@@ -8,7 +8,10 @@ export interface DonatorPerson {
         id: number,
         email: string,
         password: string,
-        roles: []
+        roles: {
+            id: number,
+            name: string
+        }
     },
     description: string,
     cpfCnpj: number,
