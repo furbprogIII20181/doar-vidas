@@ -12,6 +12,9 @@ import { SolicitationsService } from "../services/solicitations.service";
   styleUrls: ["./solicitations.component.css"]
 })
 export class SolicitationsComponent implements OnInit {
+  
+  solicitationsArray: Array<Solicitation>
+  
   exampleData = [
     {
       id: 12,
@@ -42,7 +45,7 @@ export class SolicitationsComponent implements OnInit {
     }
   ];
 
-  solicitationsTable = new MatTableDataSource(this.exampleData);
+  solicitationsTable;
 
   constructor(
     private globalService: GlobalService,
@@ -53,14 +56,25 @@ export class SolicitationsComponent implements OnInit {
   ngOnInit() {
     /*if (!this.globalService.getIsLoggedin()) {
             this.router.navigate(['/login']);
-        }*/
-    this.solicitationsTable.filterPredicate = (data: any, filter: string) => {
-      var str = this.getStringObject(data);
-      return str
-        .toLowerCase()
-        .trim()
-        .includes(filter.toLowerCase().trim());
-    };
+          }*/
+    this.getAllSolicitations();
+    
+    if (!!this.solicitationsTable) {
+      this.solicitationsTable.filterPredicate = (data: any, filter: string) => {
+        var str = this.getStringObject(data);
+        return str
+          .toLowerCase()
+          .trim()
+          .includes(filter.toLowerCase().trim());
+      };
+    }
+  }
+
+  getAllSolicitations(): void {
+    this.globalService.getAllSolicitations().subscribe(response => {
+      this.solicitationsArray = response;
+      this.solicitationsTable = new MatTableDataSource(this.solicitationsArray);
+    })
   }
 
   getStringObject(data) {

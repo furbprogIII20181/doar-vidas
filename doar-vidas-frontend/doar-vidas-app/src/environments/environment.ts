@@ -11,7 +11,8 @@ export const environment = {
     registerInstitution: "http://localhost:8080/rest/public/institution/save",
     login: "http://localhost:8080/oauth/token",
     getUserInfo: "http://localhost:8080/rest/private/user/findByEmail",
-    donatorsListAll: "http://localhost:8080/rest/public/donator/listAll"
+    donatorsListAll: "http://localhost:8080/rest/public/donator/listAll",
+    solicitationsListAll: "http://localhost:8080/rest/private/solicitation/listAll"
   }
 };
 

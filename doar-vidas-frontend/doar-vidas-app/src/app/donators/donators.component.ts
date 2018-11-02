@@ -28,7 +28,6 @@ export class DonatorsComponent implements OnInit {
     this.globalService.getDonatorsAll().subscribe(response => {
       this.donatorsPersonArray = response;
       this.donatorsTable = new MatTableDataSource(this.donatorsPersonArray);
-      console.log(this.donatorsTable);
     })
   }
 

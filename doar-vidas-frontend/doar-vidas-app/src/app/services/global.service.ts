@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { UserInfo } from '../model/uset.info.model';
 import { Router } from '@angular/router';
 import { DonatorPerson } from '../model/donator.person.model';
+import { Solicitation } from '../model/solicitation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -50,4 +51,15 @@ export class GlobalService {
     }
     return this.http.post<Array<DonatorPerson>>(environment.api.donatorsListAll,"",httpOptions)
   }
+
+  getAllSolicitations(): Observable<Array<Solicitation>> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    }
+    let url = environment.api.solicitationsListAll + "?access_token=" + localStorage.getItem('access_token');
+    return this.http.post<Array<Solicitation>>(url,"",httpOptions)
+  }
+
 }
