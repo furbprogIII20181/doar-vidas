@@ -28,7 +28,8 @@ export class DonatorsComponent implements OnInit {
     this.globalService.getDonatorsAll().subscribe(response => {
       this.donatorsPersonArray = response;
       this.donatorsTable = new MatTableDataSource(this.donatorsPersonArray);
-    })
+    },
+    (error) => this.globalService.handleError(error))
   }
 
   applyFilter(filterValue: string) {

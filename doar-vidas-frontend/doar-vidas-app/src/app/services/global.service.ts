@@ -52,14 +52,16 @@ export class GlobalService {
     return this.http.post<Array<DonatorPerson>>(environment.api.donatorsListAll,"",httpOptions)
   }
 
-  getAllSolicitations(): Observable<Array<Solicitation>> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
+  handleError(error) {
+    if (error.error.error_description) {
+      alert(error.error.error_description)
+    } else {
+      alert(error.error.message)
     }
-    let url = environment.api.solicitationsListAll + "?access_token=" + localStorage.getItem('access_token');
-    return this.http.post<Array<Solicitation>>(url,"",httpOptions)
+    if (error.status == 401) {
+      localStorage.clear()
+      this.router.navigate(['/login'])
+    }
   }
 
 }

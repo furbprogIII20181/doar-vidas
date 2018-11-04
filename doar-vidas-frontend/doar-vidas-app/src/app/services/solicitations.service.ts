@@ -1,10 +1,14 @@
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { Solicitation } from "../model/solicitation.model";
+import { HttpHeaders, HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: "root"
 })
 export class SolicitationsService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   convertBloodType(code: string): string {
     switch (code) {
@@ -27,5 +31,26 @@ export class SolicitationsService {
       default:
         return "";
     }
+  }
+
+  getAllSolicitations(): Observable<Array<Solicitation>> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    }
+    let url = environment.api.solicitationsListAll + "?access_token=" + localStorage.getItem('access_token');
+    return this.http.post<Array<Solicitation>>(url,"",httpOptions)
+  }
+
+  getSolicitation(id:number): Observable<Solicitation> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    }
+
+    let url = environment.api.solicitationById + '?access_token=' + localStorage.getItem('access_token')
+    return this.http.post<Solicitation>(url, id, httpOptions)
   }
 }

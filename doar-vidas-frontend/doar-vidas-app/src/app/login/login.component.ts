@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.loginAction(body).subscribe(
       (data) => this.onSuccess(data),
-      (error) => this.handleError(error)
+      (error) => this.globalService.handleError(error)
     )
   }
 
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/donators']);
         }
       },
-      (error) => this.handleError(error)
+      (error) => this.globalService.handleError(error)
     )
   }
 
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
   getUserByEmail(email): any {
     return this.globalService.getUserByEmail(email).subscribe(
       (data) => data,
-      (error) => this.handleError(error)
+      (error) => this.globalService.handleError(error)
     )
   }
 

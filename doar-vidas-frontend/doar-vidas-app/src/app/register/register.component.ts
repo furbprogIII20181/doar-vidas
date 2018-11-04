@@ -106,7 +106,9 @@ export class RegisterComponent implements OnInit {
   }
 
   getStates(): void {
-    this.statesService.getStates().subscribe(response => this.statesObject = {... response})
+    this.statesService.getStates().subscribe(
+      response => this.statesObject = {... response},
+      (error) => this.globalService.handleError(error))
   }
 
   onSubmit() {

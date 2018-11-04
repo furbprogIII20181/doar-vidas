@@ -15,36 +15,6 @@ export class SolicitationsComponent implements OnInit {
   
   solicitationsArray: Array<Solicitation>
   
-  exampleData = [
-    {
-      id: 12,
-      institution: {
-        id: 8,
-        name: "Hemosc",
-        lastName: "Blumenau",
-        city: "Blumenau",
-        state: "SC",
-        phone: "123123",
-        user: {
-          id: 6,
-          email: "hemosc@hotmail.com",
-          password:
-            "$2a$10$5p.Gkl5raFiM/vx7gJMJm.qzBXrCwqrzS3HsitCEwzlBDwJJYONI6",
-          roles: [
-            {
-              id: 7,
-              name: "USER"
-            }
-          ]
-        },
-        description: "aaa",
-        cnpj: 123456789
-      },
-      bloodType: "ONEG",
-      quantity: 2.5
-    }
-  ];
-
   solicitationsTable;
 
   constructor(
@@ -71,10 +41,11 @@ export class SolicitationsComponent implements OnInit {
   }
 
   getAllSolicitations(): void {
-    this.globalService.getAllSolicitations().subscribe(response => {
+    this.solicitationsService.getAllSolicitations().subscribe(response => {
       this.solicitationsArray = response;
       this.solicitationsTable = new MatTableDataSource(this.solicitationsArray);
-    })
+    },
+    (error) => this.globalService.handleError(error))
   }
 
   getStringObject(data) {

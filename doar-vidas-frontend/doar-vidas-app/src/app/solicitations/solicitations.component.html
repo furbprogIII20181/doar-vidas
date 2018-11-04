@@ -34,7 +34,7 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-raised-button class="doeButton" color="warn">Doe</button>
+      <a mat-raised-button class="doeButton" color="warn" [href]="['solicitations/']+element.id">Doe</a>
     </td>
   </ng-container>
 
