@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.furb.br.doarvidas.model.entities.DonationEntity;
 import com.furb.br.doarvidas.model.entities.DonatorEntity;
 import com.furb.br.doarvidas.model.entities.SolicitationEntity;
 import com.furb.br.doarvidas.model.entities.UserEntity;
 import com.furb.br.doarvidas.model.pojo.DonatorPojo;
 import com.furb.br.doarvidas.model.pojo.SolicitationDonationPojo;
+import com.furb.br.doarvidas.repository.DonationRepository;
 import com.furb.br.doarvidas.repository.DonatorRepository;
 import com.furb.br.doarvidas.services.UserService;
 
@@ -35,6 +37,9 @@ public class DonatorController extends AbstractController<DonatorPojo> {
 
 	@Autowired
 	private DonatorRepository donatorRepo;
+	
+	@Autowired
+	private DonationRepository donationRepo;
 	
 	@Autowired
 	private UserService service;
@@ -66,6 +71,12 @@ public class DonatorController extends AbstractController<DonatorPojo> {
 			return new ResponseEntity<>(donatorPojo, HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@PostMapping(value = "/donations/{id:[0-9][0-9]*}")
+	public ResponseEntity<?> getDonationsByDonator(@PathVariable("id") Integer id) {
+		List<DonationEntity> donators = donationRepo.findAllByDonatorId(id);
+		return new ResponseEntity<>(donators, HttpStatus.OK);
 	}
 
 	@Override
