@@ -5,16 +5,21 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.aspectj.weaver.AjAttribute.MethodDeclarationLineNumberAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.furb.br.doarvidas.model.entities.InstitutionEntity;
 import com.furb.br.doarvidas.model.entities.SolicitationEntity;
+import com.furb.br.doarvidas.model.pojo.SolicitationDonationPojo;
 import com.furb.br.doarvidas.model.pojo.SolicitationPojo;
 import com.furb.br.doarvidas.repository.InstitutionRepository;
 import com.furb.br.doarvidas.repository.SolicitationRepository;
@@ -42,7 +47,7 @@ public class SolicitationController extends AbstractController<SolicitationPojo>
 			SolicitationEntity savedSolicitation = solicitationRepo.save(new SolicitationEntity(solicitation, institution.get()));
 			return new ResponseEntity<>(savedSolicitation, HttpStatus.OK);
 		}
-    	return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    	return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 	@Override
@@ -54,6 +59,25 @@ public class SolicitationController extends AbstractController<SolicitationPojo>
     	return new ResponseEntity<>(solicitations, HttpStatus.OK);
     }
 
+	@PostMapping(value = "/{id:[0-9][0-9]*}")
+	public ResponseEntity<?> findById(@PathVariable("id") Integer id) {
+		Optional<SolicitationEntity> solicitation = solicitationRepo.findById(id);
+		if (solicitation.isPresent()) {
+			// criar o pojo e retorna-lo
+			SolicitationEntity solicitationEntity = solicitation.get();
+			SolicitationDonationPojo solicitationPojo = new SolicitationDonationPojo();
+			solicitationPojo.setId(id);
+			solicitationPojo.setName(solicitationEntity.getInstitution().getName());
+			solicitationPojo.setLastName(solicitationEntity.getInstitution().getLastName());
+			solicitationPojo.setCity(solicitationEntity.getInstitution().getCity());
+			solicitationPojo.setState(solicitationEntity.getInstitution().getState());
+			solicitationPojo.setDescription(solicitationEntity.getInstitution().getDescription());
+			solicitationPojo.setBloodType(solicitationEntity.getBloodType());
+			return new ResponseEntity<>(solicitationPojo, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
 	@Override
 	public ResponseEntity<?> deleteById(Integer id) {
 		solicitationRepo.deleteById(id);
