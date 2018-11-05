@@ -1,5 +1,10 @@
 package com.furb.br.doarvidas.repository;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import com.furb.br.doarvidas.model.entities.DonationEntity;
 
 /**
@@ -9,4 +14,7 @@ import com.furb.br.doarvidas.model.entities.DonationEntity;
  */
 public interface DonationRepository extends BasicRepository<DonationEntity> {
 
+	@Query("SELECT d FROM Donation d WHERE d.donator = :donatorId")
+	List<DonationEntity> findAllByDonatorId(@Param("donatorId") Integer donatorId);
+	
 }

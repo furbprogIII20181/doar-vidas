@@ -18,7 +18,7 @@ import { StatesService } from './services/states.service';
 import { SolicitationsComponent } from './solicitations/solicitations.component';
 import { SolicitationComponent } from './solicitations/solicitation/solicitation.component';
 import { DonatorsComponent } from './donators/donators.component';
-
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { DonatorsComponent } from './donators/donators.component';
     RegisterComponent,
     SolicitationsComponent,
     SolicitationComponent,
-    DonatorsComponent
+    DonatorsComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
