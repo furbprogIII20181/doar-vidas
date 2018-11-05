@@ -50,7 +50,7 @@ export class SolicitationsService {
       })
     }
 
-    let url = environment.api.solicitationById + '?access_token=' + localStorage.getItem('access_token')
-    return this.http.post<Solicitation>(url, id, httpOptions)
+    let url = environment.api.solicitationById + '/'+id+'?access_token=' + localStorage.getItem('access_token')
+    return this.http.post<Solicitation>(url, "", httpOptions)
   }
 }

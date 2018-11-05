@@ -1,26 +1,10 @@
 export interface Solicitation {
     id: number,
-    institution: {
-        id: number,
-        name: string,
-        lastName: string,
-        city: string,
-        state: string,
-        phone: string,
-        user: {
-            id: number,
-            email: string,
-            password: string,
-            roles: [
-                {
-                    id: number,
-                    name: string
-                }
-            ]
-        },
-        description: string,
-        cnpj: number
-    },
+    institutionId: number,
     bloodType: string,
-    quantity: number
+    city: string,
+    state: string,
+    description: string,
+    name: string,
+    lastName: string
 }

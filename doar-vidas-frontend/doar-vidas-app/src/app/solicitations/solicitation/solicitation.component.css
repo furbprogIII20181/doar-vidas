@@ -46,7 +46,7 @@
     width: 250px;
   }
   
-  .actions {
+  .actions form {
     width: 100%;
     display: flex;
     justify-content: space-around;

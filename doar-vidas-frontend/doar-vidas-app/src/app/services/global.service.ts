@@ -5,7 +5,6 @@ import { environment } from '../../environments/environment';
 import { UserInfo } from '../model/uset.info.model';
 import { Router } from '@angular/router';
 import { DonatorPerson } from '../model/donator.person.model';
-import { Solicitation } from '../model/solicitation.model';
 
 @Injectable({
   providedIn: 'root'

@@ -3,6 +3,7 @@ import { GlobalService } from "../../services/global.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Solicitation } from "../../model/solicitation.model";
 import { SolicitationsService } from "../../services/solicitations.service";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-solicitation",
@@ -14,13 +15,23 @@ export class SolicitationComponent implements OnInit {
     private globalService: GlobalService,
     private router: Router,
     private route: ActivatedRoute,
-    private solicitationsService: SolicitationsService
+    private solicitationsService: SolicitationsService,
+    private formBuilder: FormBuilder
   ) {}
+
+  solicitationForm: FormGroup
+
+  solicitation: Solicitation
 
   ngOnInit() {
     if (!this.globalService.getIsLoggedin()) {
       this.router.navigate(["/login"]);
     }
+    this.solicitationForm = this.formBuilder.group({
+      donatorID: this.formBuilder.control('',[Validators.required]),
+      institutionID: this.formBuilder.control('',[Validators.required]),
+      date: this.formBuilder.control('', [Validators.required])
+    })
     this.getSolicitation();
   }
 
@@ -29,9 +40,18 @@ export class SolicitationComponent implements OnInit {
 
     this.solicitationsService
       .getSolicitation(solicitationId)
-      .subscribe(
-        data => console.log(data),
+      .subscribe(response => {
+        this.solicitation = response;
+        },
         error => this.globalService.handleError(error)
       );
+  }
+
+  getMappedBlood(bloodType: string): string {
+    return this.solicitationsService.convertBloodType(bloodType)
+  }
+
+  getDonatorId(): string {
+    return JSON.parse(localStorage.getItem("user_info")).id;
   }
 }
