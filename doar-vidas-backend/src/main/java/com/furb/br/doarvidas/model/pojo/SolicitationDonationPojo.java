@@ -10,6 +10,7 @@ import com.furb.br.doarvidas.model.domain.BloodType;
 public class SolicitationDonationPojo extends BasicPojo {
 
 	private Integer id;
+	private Integer institutionId;
 	private String name;
 	private String lastName;
 	private String city;
@@ -22,6 +23,12 @@ public class SolicitationDonationPojo extends BasicPojo {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Integer getInstitutionId() {
+		return institutionId;
+	}
+	public void setInstitutionId(Integer institutionId) {
+		this.institutionId = institutionId;
 	}
 	public String getName() {
 		return name;
