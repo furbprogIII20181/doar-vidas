@@ -19,6 +19,7 @@ import { SolicitationsComponent } from './solicitations/solicitations.component'
 import { SolicitationComponent } from './solicitations/solicitation/solicitation.component';
 import { DonatorsComponent } from './donators/donators.component';
 import { DonationComponent } from './donation/donation.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DonationComponent } from './donation/donation.component';
     SolicitationsComponent,
     SolicitationComponent,
     DonatorsComponent,
-    DonationComponent
+    DonationComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

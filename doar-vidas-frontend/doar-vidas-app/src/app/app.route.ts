@@ -6,6 +6,7 @@ import { SolicitationsComponent } from "./solicitations/solicitations.component"
 import { SolicitationComponent } from "./solicitations/solicitation/solicitation.component";
 import { DonatorsComponent } from "./donators/donators.component";
 import { DonationComponent } from "./donation/donation.component";
+import { ContactComponent } from "./contact/contact.component";
 
 export const ROUTES: Routes = [
     {path: '', component: HomeComponent},
@@ -14,5 +15,6 @@ export const ROUTES: Routes = [
     {path: 'solicitations', component: SolicitationsComponent},
     {path: 'solicitations/:id', component: SolicitationComponent},
     {path: 'donators', component: DonatorsComponent},
+    {path: 'donators/:id', component: ContactComponent},
     {path: 'donation', component: DonationComponent}
 ]
