@@ -66,10 +66,11 @@ export class RegisterComponent implements OnInit {
       state: this.formBuilder.control('', [Validators.required]),
       city: this.formBuilder.control('',[Validators.required]),
       bloodType: this.formBuilder.control('',[Validators.required]),
+      description: this.formBuilder.control('',[Validators.required]),
       password: this.formBuilder.control('',[Validators.required, Validators.minLength(6)]),
       confirmPassword: this.formBuilder.control('', [Validators.required, Validators.minLength(6)]),
     }, {validator: RegisterComponent.equalsTo})
-    
+
     this.getStates()
     this.onChanges()
   }
@@ -128,14 +129,14 @@ export class RegisterComponent implements OnInit {
   registerDonator(donator: Donator) {
     this.registerService.registerDonator(donator).subscribe(
       (data) => this.loginAction(this.registerForm.get('email').value,this.registerForm.get('password').value, this.personDonator),
-      (error) => this.handleError(error)
+      (error) => this.globalService.handleError(error)
     )
   }
 
   registerInstitution(institution: Institution) {
     this.registerService.registerInstitution(institution).subscribe(
       (data) => this.loginAction(this.registerForm.get('email').value,this.registerForm.get('password').value, this.personInstitution),
-      (error) => this.handleError(error)
+      (error) => this.globalService.handleError(error)
     )
   }
 
@@ -147,7 +148,7 @@ export class RegisterComponent implements OnInit {
 
     this.loginService.loginAction(body).subscribe(
       (data) => this.onSuccess(data, personType),
-      (error) => this.handleError(error)
+      (error) => this.globalService.handleError(error)
     )
   }
 
@@ -160,14 +161,10 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/solicitations']);
         } else {
           this.router.navigate(['/donators']);
-        } 
+        }
       },
-      (error) => this.handleError(error)
+      (error) => this.globalService.handleError(error)
     )
-  }
-
-  handleError(error) {
-    console.log(error)
   }
 
   cancel() {

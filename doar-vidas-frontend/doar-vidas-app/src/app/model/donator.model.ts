@@ -8,5 +8,6 @@ export interface Donator {
     state: string,
     city: string,
     bloodType: string,
+    description: string,
     password: string
 }

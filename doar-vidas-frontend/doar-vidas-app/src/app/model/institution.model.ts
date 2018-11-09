@@ -7,5 +7,6 @@ export interface Institution {
     phone: string,
     state: string,
     city: string,
+    description: string;
     password: string
 }

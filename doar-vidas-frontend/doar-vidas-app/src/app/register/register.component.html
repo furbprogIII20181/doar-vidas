@@ -69,6 +69,11 @@
             </mat-form-field>
         </div>
         <div class="field">
+          <mat-form-field>
+            <textarea matInput placeholder="* Descrição" formControlName="description"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="field">
             <mat-form-field>
                 <input matInput formControlName="password" placeholder="* Senha" autocomplete="off" [type]="hidePass ? 'password' : 'text'">
                 <mat-icon matSuffix (click)="hidePass = !hidePass">{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
@@ -81,7 +86,7 @@
                 <mat-icon matSuffix (click)="hideCPass = !hideCPass">{{hideCPass ? 'visibility' : 'visibility_off'}}</mat-icon>
                 <mat-error *ngIf="!registerForm.get('confirmPassword').valid && registerForm.get('confirmPassword').dirty">A senha deve ter no mínimo 6 caracteres.</mat-error>
             </mat-form-field>
-        </div>      
+        </div>
       </mat-card-content>
       <mat-card-actions class="register-actions">
         <button class="button" mat-button (click)="cancel()"><< Voltar</button>
