@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Solicitation } from "../../model/solicitation.model";
 import { SolicitationsService } from "../../services/solicitations.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {Donation} from "../../model/donation.model";
 
 @Component({
   selector: "app-solicitation",
@@ -42,6 +43,8 @@ export class SolicitationComponent implements OnInit {
       .getSolicitation(solicitationId)
       .subscribe(response => {
         this.solicitation = response;
+        this.solicitationForm.get('donatorID').setValue(this.getDonatorId())
+        this.solicitationForm.get('institutionID').setValue(this.solicitation.institutionId)
         },
         error => this.globalService.handleError(error)
       );
@@ -53,5 +56,22 @@ export class SolicitationComponent implements OnInit {
 
   getDonatorId(): string {
     return JSON.parse(localStorage.getItem("user_info")).id;
+  }
+
+  saveDonation(): any {
+    let donation: Donation = this.solicitationForm.value
+    const teste =  this.solicitationsService
+      .saveDonation(donation)
+      .subscribe(
+        (data) => console.log(data),
+        (error) => console.log(error)
+      )
+  }
+
+  onSubmit() {
+    console.log(this.solicitationForm.get('donatorID').value)
+    if (this.solicitationForm.valid) {
+      this.saveDonation()
+    }
   }
 }

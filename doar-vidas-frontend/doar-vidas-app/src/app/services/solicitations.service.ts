@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { Solicitation } from "../model/solicitation.model";
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
+import {Donation} from "../model/donation.model";
 
 @Injectable({
   providedIn: "root"
@@ -52,5 +53,15 @@ export class SolicitationsService {
 
     let url = environment.api.solicitationById + '/'+id+'?access_token=' + localStorage.getItem('access_token')
     return this.http.post<Solicitation>(url, "", httpOptions)
+  }
+
+  saveDonation(donation: Donation): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    }
+    let url = environment.api.saveDonation + "?access_token=" + localStorage.getItem('access_token');
+    return this.http.post<any>(url,JSON.stringify(donation),httpOptions)
   }
 }
