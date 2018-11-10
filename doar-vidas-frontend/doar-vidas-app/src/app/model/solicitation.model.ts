@@ -6,5 +6,6 @@ export interface Solicitation {
     state: string,
     description: string,
     name: string,
-    lastName: string
+    lastName: string,
+    quantity: number
 }

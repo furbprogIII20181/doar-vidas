@@ -20,6 +20,7 @@ import { SolicitationComponent } from './solicitations/solicitation/solicitation
 import { DonatorsComponent } from './donators/donators.component';
 import { ContactComponent } from './contact/contact.component';
 import { SuccessComponent } from './solicitations/solicitation/success/success.component';
+import { ISolicitationComponent } from './institution/solicitations/i-solicitation/i-solicitation.component';
 import { DateFormat } from './date-format';
 
 @NgModule({
@@ -33,7 +34,8 @@ import { DateFormat } from './date-format';
     SolicitationComponent,
     DonatorsComponent,
     ContactComponent,
-    SuccessComponent
+    SuccessComponent,
+    ISolicitationComponent
   ],
   imports: [
     BrowserModule,

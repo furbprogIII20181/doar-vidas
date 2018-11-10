@@ -45,6 +45,17 @@ export class SolicitationsService {
     return this.http.post<Array<Solicitation>>(url,"",httpOptions)
   }
 
+  getAllSolicitationsByInstitutionID(): Observable<Array<Solicitation>> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    }
+    let institutionId = 12;
+    let url = environment.api.solicitationByInstitutionId + '/'+institutionId+'?access_token=' + localStorage.getItem('access_token');
+    return this.http.post<Array<Solicitation>>(url,"",httpOptions)
+  }
+
   getSolicitation(id:number): Observable<Solicitation> {
     const httpOptions = {
       headers: new HttpHeaders({
