@@ -56,6 +56,19 @@ public class SolicitationController extends AbstractController<SolicitationPojo>
 			    .collect(Collectors.toList());
     	return new ResponseEntity<>(solicitations, HttpStatus.OK);
     }
+	
+	@PostMapping(value = "/{institutionId:[0-9][0-9]*}")
+	public ResponseEntity<?> findByInstitution(@PathVariable("institutionId") Integer institutionId) {
+		Optional<InstitutionEntity> institution = institutionRepo.findById(institutionId);
+		if (institution.isPresent()) {
+			Iterable<SolicitationEntity> allSolicitations = solicitationRepo.findByInstitution(institution.get());
+			List<SolicitationEntity> solicitations = StreamSupport
+				    .stream(allSolicitations.spliterator(), false)
+				    .collect(Collectors.toList());
+			return new ResponseEntity<>(solicitations, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 
 	@PostMapping(value = "/{id:[0-9][0-9]*}")
 	public ResponseEntity<?> findById(@PathVariable("id") Integer id) {

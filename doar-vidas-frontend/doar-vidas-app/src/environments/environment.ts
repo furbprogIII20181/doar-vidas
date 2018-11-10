@@ -13,7 +13,8 @@ export const environment = {
     getUserInfo: "http://localhost:8080/rest/private/user/findByEmail",
     donatorsListAll: "http://localhost:8080/rest/public/donator/listAll",
     solicitationsListAll: "http://localhost:8080/rest/private/solicitation/listAll",
-    solicitationById: "http://localhost:8080/rest/private/solicitation"
+    solicitationById: "http://localhost:8080/rest/private/solicitation",
+    solicitationByInstitutionId: "http://localhost:8080/rest/private/solicitation/findByInstitution"
   }
 };
 
