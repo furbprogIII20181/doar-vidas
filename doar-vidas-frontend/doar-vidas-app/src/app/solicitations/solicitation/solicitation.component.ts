@@ -24,6 +24,8 @@ export class SolicitationComponent implements OnInit {
 
   solicitation: Solicitation
 
+  minDate = new Date(Date.now());
+
   ngOnInit() {
     if (!this.globalService.getIsLoggedin()) {
       this.router.navigate(["/login"]);
@@ -34,6 +36,10 @@ export class SolicitationComponent implements OnInit {
       date: this.formBuilder.control('', [Validators.required])
     })
     this.getSolicitation();
+  }
+
+  sundayFilter = (d: Date): boolean => {
+    return d.getDay() !== 0
   }
 
   getSolicitation(): void {
@@ -60,16 +66,15 @@ export class SolicitationComponent implements OnInit {
 
   saveDonation(): any {
     let donation: Donation = this.solicitationForm.value
-    const teste =  this.solicitationsService
+    this.solicitationsService
       .saveDonation(donation)
       .subscribe(
-        (data) => console.log(data),
-        (error) => console.log(error)
+        (data) => this.solicitationsService.succesAction(data),
+        (error) => this.globalService.handleError(error)
       )
   }
 
   onSubmit() {
-    console.log(this.solicitationForm.get('donatorID').value)
     if (this.solicitationForm.valid) {
       this.saveDonation()
     }

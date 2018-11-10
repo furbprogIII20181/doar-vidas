@@ -48,6 +48,10 @@ export class SolicitationsComponent implements OnInit {
     (error) => this.globalService.handleError(error))
   }
 
+  getMappedBlood(bloodType: string): string {
+    return this.solicitationsService.convertBloodType(bloodType)
+  }
+
   getStringObject(data) {
     let str = "";
     Object.keys(data).forEach(e => {

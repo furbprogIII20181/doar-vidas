@@ -45,6 +45,10 @@
   .datePicker {
     width: 250px;
   }
+
+  .datePicker input {
+    cursor: pointer;
+  }
   
   .actions form {
     width: 100%;

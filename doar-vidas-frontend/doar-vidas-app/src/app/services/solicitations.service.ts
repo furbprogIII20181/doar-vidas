@@ -4,12 +4,13 @@ import { Solicitation } from "../model/solicitation.model";
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import {Donation} from "../model/donation.model";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
 export class SolicitationsService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   convertBloodType(code: string): string {
     switch (code) {
@@ -63,5 +64,13 @@ export class SolicitationsService {
     }
     let url = environment.api.saveDonation + "?access_token=" + localStorage.getItem('access_token');
     return this.http.post<any>(url,JSON.stringify(donation),httpOptions)
+  }
+
+  succesAction(data:any) {
+    localStorage.setItem('institutionName',data.institution.name + " " + data.institution.lastName)
+    localStorage.setItem('institutionCity',data.institution.city)
+    localStorage.setItem('institutionState',data.institution.state)
+    localStorage.setItem('institutionDate',data.date)
+    this.router.navigate(['/solicitations/success'])
   }
 }
