@@ -21,8 +21,8 @@
     <div class="rightDiv">
       <div class="actions">
         <form [formGroup]="solicitationForm" (ngSubmit)="onSubmit()" novalidate>
-          <input type="hidden" name="donatorID" formControlName="donatorID" [value]="getDonatorId()" />
-          <input type="hidden" name="institutionID" formControlName="institutionID" [value]="solicitation?.institutionId" />
+          <input type="hidden" name="donatorID" formControlName="donatorID" />
+          <input type="hidden" name="institutionID" formControlName="institutionID" />
           <mat-form-field class="datePicker">
             <input matInput formControlName="date" [matDatepicker]="picker" placeholder="Escolha uma data">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
