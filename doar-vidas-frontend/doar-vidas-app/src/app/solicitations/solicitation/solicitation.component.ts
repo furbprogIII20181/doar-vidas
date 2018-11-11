@@ -57,7 +57,7 @@ export class SolicitationComponent implements OnInit {
   }
 
   getMappedBlood(bloodType: string): string {
-    return this.solicitationsService.convertBloodType(bloodType)
+    return this.globalService.convertBloodType(bloodType)
   }
 
   getDonatorId(): string {

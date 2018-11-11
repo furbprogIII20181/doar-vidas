@@ -49,7 +49,7 @@ export class SolicitationsComponent implements OnInit {
   }
 
   getMappedBlood(bloodType: string): string {
-    return this.solicitationsService.convertBloodType(bloodType)
+    return this.globalService.convertBloodType(bloodType)
   }
 
   getStringObject(data) {

@@ -12,29 +12,6 @@ import { Router } from "@angular/router";
 export class SolicitationsService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  convertBloodType(code: string): string {
-    switch (code) {
-      case "APOS":
-        return "A+";
-      case "ANEG":
-        return "A-";
-      case "BPOS":
-        return "B+";
-      case "BNEG":
-        return "B-";
-      case "ABPOS":
-        return "AB+";
-      case "ABNEG":
-        return "AB-";
-      case "OPOS":
-        return "O+";
-      case "ONEG":
-        return "O-";
-      default:
-        return "";
-    }
-  }
-
   getAllSolicitations(): Observable<Array<Solicitation>> {
     const httpOptions = {
       headers: new HttpHeaders({
