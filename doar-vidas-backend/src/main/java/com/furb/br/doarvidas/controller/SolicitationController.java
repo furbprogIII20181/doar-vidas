@@ -57,7 +57,7 @@ public class SolicitationController extends AbstractController<SolicitationPojo>
     	return new ResponseEntity<>(solicitations, HttpStatus.OK);
     }
 	
-	@PostMapping(value = "/{institutionId:[0-9][0-9]*}")
+	@PostMapping(value = "findByInstitution/{institutionId:[0-9][0-9]*}")
 	public ResponseEntity<?> findByInstitution(@PathVariable("institutionId") Integer institutionId) {
 		Optional<InstitutionEntity> institution = institutionRepo.findById(institutionId);
 		if (institution.isPresent()) {
