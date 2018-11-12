@@ -48,7 +48,7 @@ export class GlobalService {
         'Content-Type':  'application/json'
       })
     }
-    return this.http.post<Array<DonatorPerson>>(environment.api.donatorsListAll,"",httpOptions)
+    return this.http.get<Array<DonatorPerson>>(environment.api.donatorsListAll, httpOptions)
   }
 
   handleError(error) {

@@ -43,7 +43,7 @@ export class ISolicitationComponent implements OnInit {
     }
   }
 
-  openDialog(solicitationId: number): void {
+  openDialog(element: any): void {
     const dialogRef = this.dialog.open(ModalBaixaComponent, {
       width: '250px',
       data: {quantity: this.quantiy}
@@ -53,7 +53,7 @@ export class ISolicitationComponent implements OnInit {
       let qty = parseInt(result)
 
       if (!isNaN(qty) && qty > 0) {
-        console.log(solicitationId);
+        console.log(element.id, element.quantity);
       }
     });
   }

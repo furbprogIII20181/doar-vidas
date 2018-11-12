@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,7 +59,7 @@ public class SolicitationController extends AbstractController<SolicitationPojo>
     	return new ResponseEntity<>(solicitations, HttpStatus.OK);
     }
 	
-	@PostMapping(value = "findByInstitution/{institutionId:[0-9][0-9]*}")
+	@GetMapping(value = "findByInstitution/{institutionId:[0-9][0-9]*}")
 	public ResponseEntity<?> findByInstitution(@PathVariable("institutionId") Integer institutionId) {
 		Optional<InstitutionEntity> institution = institutionRepo.findById(institutionId);
 		if (institution.isPresent()) {

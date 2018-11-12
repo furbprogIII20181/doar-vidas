@@ -22,7 +22,7 @@ export class SolicitationsService {
       environment.api.solicitationsListAll +
       "?access_token=" +
       localStorage.getItem("access_token");
-    return this.http.post<Array<Solicitation>>(url, "", httpOptions);
+    return this.http.get<Array<Solicitation>>(url, httpOptions);
   }
 
   getAllSolicitationsByInstitutionID(
@@ -39,7 +39,7 @@ export class SolicitationsService {
       institutionId +
       "?access_token=" +
       localStorage.getItem("access_token");
-    return this.http.post<Array<Solicitation>>(url, "", httpOptions);
+    return this.http.get<Array<Solicitation>>(url, httpOptions);
   }
 
   getSolicitation(id: number): Observable<Solicitation> {
@@ -55,7 +55,7 @@ export class SolicitationsService {
       id +
       "?access_token=" +
       localStorage.getItem("access_token");
-    return this.http.post<Solicitation>(url, "", httpOptions);
+    return this.http.get<Solicitation>(url, httpOptions);
   }
 
   saveDonation(donation: Donation): Observable<any> {
@@ -68,7 +68,21 @@ export class SolicitationsService {
       environment.api.saveDonation +
       "?access_token=" +
       localStorage.getItem("access_token");
-    return this.http.post<any>(url, JSON.stringify(donation), httpOptions);
+    return this.http.put<any>(url, JSON.stringify(donation), httpOptions);
+  }
+
+  deleteSolicitation(id: number): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    };
+    let url =
+      environment.api.deleteSolicitation +
+      id + 
+      "?access_token=" +
+      localStorage.getItem("access_token");
+      return this.http.delete(url,httpOptions)
   }
 
   succesAction(data: any) {

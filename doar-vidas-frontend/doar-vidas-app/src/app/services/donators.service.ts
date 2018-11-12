@@ -17,6 +17,6 @@ export class DonatorsService {
     }
     let url = environment.api.donatorById + '/'+id+'?access_token=' + localStorage.getItem('access_token')
 
-    return this.http.post<any>(url, "", httpOptions)
+    return this.http.get<any>(url, httpOptions)
   }
 }
