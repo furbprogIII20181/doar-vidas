@@ -22,13 +22,12 @@ export class SolicitationsService {
     return this.http.post<Array<Solicitation>>(url,"",httpOptions)
   }
 
-  getAllSolicitationsByInstitutionID(): Observable<Array<Solicitation>> {
+  getAllSolicitationsByInstitutionID(institutionId: number): Observable<Array<Solicitation>> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     }
-    let institutionId = 29/*JSON.parse(localStorage.getItem('user_info')).id*/
     let url = environment.api.solicitationByInstitutionId + '/'+institutionId+'?access_token=' + localStorage.getItem('access_token');
     return this.http.post<Array<Solicitation>>(url,"",httpOptions)
   }

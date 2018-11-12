@@ -6,11 +6,11 @@ import { ROUTES } from './app.route';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatIconModule, MatMenuModule, MatCardModule, MatToolbarModule, MatSidenavModule, MatSelectModule, MatPaginatorModule, MatTableModule, MatSortModule, MatFormFieldModule, MatRadioModule, MatInputModule, MatDividerModule, MatDatepickerModule, MatNativeDateModule, DateAdapter } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatCheckboxModule, MatIconModule, MatMenuModule, MatCardModule, MatToolbarModule, MatSidenavModule, MatSelectModule, MatPaginatorModule, MatTableModule, MatSortModule, MatFormFieldModule, MatRadioModule, MatInputModule, MatDividerModule, MatDatepickerModule, MatNativeDateModule, DateAdapter } from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginService } from './services/login.service';
 import { HttpClientModule } from "@angular/common/http";
 import { RegisterComponent } from './register/register.component';
@@ -22,6 +22,7 @@ import { ContactComponent } from './contact/contact.component';
 import { SuccessComponent } from './solicitations/solicitation/success/success.component';
 import { ISolicitationComponent } from './institution/solicitations/i-solicitation/i-solicitation.component';
 import { DateFormat } from './date-format';
+import { ModalBaixaComponent } from './institution/solicitations/i-solicitation/modal-baixa/modal-baixa.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DateFormat } from './date-format';
     DonatorsComponent,
     ContactComponent,
     SuccessComponent,
-    ISolicitationComponent
+    ISolicitationComponent,
+    ModalBaixaComponent
   ],
   imports: [
     BrowserModule,
@@ -57,10 +59,13 @@ import { DateFormat } from './date-format';
     MatNativeDateModule,
     MatPaginatorModule,
     MatSortModule,
+    MatDialogModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(ROUTES)
   ],
+  entryComponents: [ModalBaixaComponent],
   providers: [LoginService, StatesService, {provide: DateAdapter, useClass: DateFormat}],
   bootstrap: [AppComponent]
 })

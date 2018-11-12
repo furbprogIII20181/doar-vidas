@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { MatTableDataSource } from "@angular/material";
+import { MatTableDataSource, MatDialog } from "@angular/material";
 import { Solicitation } from "../../../model/solicitation.model";
 import { GlobalService } from "../../../services/global.service";
 import { Router } from "@angular/router";
 import { SolicitationsService } from "../../../services/solicitations.service";
+import { ModalBaixaComponent } from "./modal-baixa/modal-baixa.component";
 
 @Component({
   selector: 'app-i-solicitation',
@@ -19,8 +20,11 @@ export class ISolicitationComponent implements OnInit {
   constructor(
     private globalService: GlobalService,
     private router: Router,
-    private solicitationsService: SolicitationsService
+    private solicitationsService: SolicitationsService,
+    public dialog: MatDialog
   ) {}
+
+  quantiy: number = 0
 
   ngOnInit() {
     /*if (!this.globalService.getIsLoggedin()) {
@@ -39,8 +43,24 @@ export class ISolicitationComponent implements OnInit {
     }
   }
 
+  openDialog(solicitationId: number): void {
+    const dialogRef = this.dialog.open(ModalBaixaComponent, {
+      width: '250px',
+      data: {quantity: this.quantiy}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      let qty = parseInt(result)
+
+      if (!isNaN(qty) && qty > 0) {
+        console.log(solicitationId);
+      }
+    });
+  }
+
   getAllSolicitations(): void {
-    this.solicitationsService.getAllSolicitationsByInstitutionID().subscribe(response => {
+    let institutionId = JSON.parse(localStorage.getItem('user_info')).id
+    this.solicitationsService.getAllSolicitationsByInstitutionID(institutionId).subscribe(response => {
       this.solicitationsArray = response;
       this.solicitationsTable = new MatTableDataSource(this.solicitationsArray);
     },
