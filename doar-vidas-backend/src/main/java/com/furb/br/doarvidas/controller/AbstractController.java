@@ -16,7 +16,7 @@ import com.furb.br.doarvidas.model.pojo.BasicPojo;
  */
 public abstract class AbstractController<P extends BasicPojo> {
 
-	@RequestMapping(method = RequestMethod.POST, value = "save", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.PUT, value = "save", consumes=MediaType.APPLICATION_JSON_VALUE)
     public abstract ResponseEntity<?> save(@RequestBody P pojo);
 	
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{id:[0-9][0-9]*}")

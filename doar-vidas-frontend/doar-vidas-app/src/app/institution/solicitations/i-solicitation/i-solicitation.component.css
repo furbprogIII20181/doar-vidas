@@ -1,14 +1,15 @@
 table {
-    width: 97%;
-    margin: 0 auto;
+  width: 97%;
+  margin: 0 auto;
 }
 
-.inputSearch{
-    width: 25%;
-    margin: 1rem 1rem 0 0;
-    float: right;
+.inputSearch {
+  width: 25%;
+  margin: 1rem 1rem 0 0;
+  float: right;
 }
 
-.doeButton{
-    float: right;
+.doeButton {
+  float: right;
+  margin-left: 5px;
 }

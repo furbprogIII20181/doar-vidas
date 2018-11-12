@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.furb.br.doarvidas.model.entities.InstitutionEntity;
 import com.furb.br.doarvidas.model.entities.SolicitationEntity;
+import com.furb.br.doarvidas.model.pojo.BaixaPojo;
 import com.furb.br.doarvidas.model.pojo.SolicitationDonationPojo;
 import com.furb.br.doarvidas.model.pojo.SolicitationPojo;
 import com.furb.br.doarvidas.repository.InstitutionRepository;
@@ -86,6 +87,16 @@ public class SolicitationController extends AbstractController<SolicitationPojo>
 			solicitationPojo.setDescription(solicitationEntity.getInstitution().getDescription());
 			solicitationPojo.setBloodType(solicitationEntity.getBloodType());
 			return new ResponseEntity<>(solicitationPojo, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@PostMapping(value = "/baixa")
+	public ResponseEntity<?> baixa(BaixaPojo pojo) {
+		Optional<SolicitationEntity> solicitation = solicitationRepo.findById(pojo.getId());
+		if (solicitation.isPresent()) {
+			solicitation.get().setQuantity(solicitation.get().getQuantity() - pojo.getQuantity());
+			return new ResponseEntity<>(solicitationRepo.save(solicitation.get()), HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}

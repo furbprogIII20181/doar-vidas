@@ -28,7 +28,7 @@ export class SolicitationsService {
         'Content-Type':  'application/json'
       })
     }
-    let institutionId = 29/*JSON.parse(localStorage.getItem('user_info')).id*/
+    let institutionId = JSON.parse(localStorage.getItem('user_info')).id
     let url = environment.api.solicitationByInstitutionId + '/'+institutionId+'?access_token=' + localStorage.getItem('access_token');
     return this.http.post<Array<Solicitation>>(url,"",httpOptions)
   }
