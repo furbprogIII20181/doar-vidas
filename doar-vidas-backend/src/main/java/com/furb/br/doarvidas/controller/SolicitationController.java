@@ -7,13 +7,14 @@ import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.furb.br.doarvidas.model.entities.InstitutionEntity;
@@ -72,7 +73,7 @@ public class SolicitationController extends AbstractController<SolicitationPojo>
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
-	@PostMapping(value = "/{id:[0-9][0-9]*}")
+	@GetMapping(value = "/{id:[0-9][0-9]*}")
 	public ResponseEntity<?> findById(@PathVariable("id") Integer id) {
 		Optional<SolicitationEntity> solicitation = solicitationRepo.findById(id);
 		if (solicitation.isPresent()) {
@@ -92,8 +93,8 @@ public class SolicitationController extends AbstractController<SolicitationPojo>
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	@PostMapping(value = "/baixa")
-	public ResponseEntity<?> baixa(BaixaPojo pojo) {
+	@RequestMapping(method = RequestMethod.POST, value = "baixa", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> baixa(@RequestBody BaixaPojo pojo) {
 		Optional<SolicitationEntity> solicitation = solicitationRepo.findById(pojo.getId());
 		if (solicitation.isPresent()) {
 			solicitation.get().setQuantity(solicitation.get().getQuantity() - pojo.getQuantity());
@@ -103,7 +104,7 @@ public class SolicitationController extends AbstractController<SolicitationPojo>
 	}
 	
 	@Override
-	public ResponseEntity<?> deleteById(Integer id) {
+	public ResponseEntity<?> deleteById(@PathVariable("id") Integer id) {
 		solicitationRepo.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

@@ -9,18 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.furb.br.doarvidas.model.entities.DonationEntity;
 import com.furb.br.doarvidas.model.entities.DonatorEntity;
-import com.furb.br.doarvidas.model.entities.SolicitationEntity;
 import com.furb.br.doarvidas.model.entities.UserEntity;
 import com.furb.br.doarvidas.model.pojo.DonatorPojo;
-import com.furb.br.doarvidas.model.pojo.SolicitationDonationPojo;
 import com.furb.br.doarvidas.repository.DonationRepository;
 import com.furb.br.doarvidas.repository.DonatorRepository;
 import com.furb.br.doarvidas.services.UserService;
@@ -62,7 +60,7 @@ public class DonatorController extends AbstractController<DonatorPojo> {
     	return new ResponseEntity<>(donators, HttpStatus.OK);
     }
 	
-	@PostMapping(value = "/{id:[0-9][0-9]*}")
+	@GetMapping(value = "/{id:[0-9][0-9]*}")
 	public ResponseEntity<?> findById(@PathVariable("id") Integer id) {
 		Optional<DonatorEntity> donator = donatorRepo.findById(id);
 		if (donator.isPresent()) {
@@ -73,14 +71,14 @@ public class DonatorController extends AbstractController<DonatorPojo> {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	@PostMapping(value = "/donations/{id:[0-9][0-9]*}")
+	@GetMapping(value = "/donations/{id:[0-9][0-9]*}")
 	public ResponseEntity<?> getDonationsByDonator(@PathVariable("id") Integer id) {
 		List<DonationEntity> donators = donationRepo.findAllByDonatorId(id);
 		return new ResponseEntity<>(donators, HttpStatus.OK);
 	}
 
 	@Override
-	public ResponseEntity<?> deleteById(Integer id) {
+	public ResponseEntity<?> deleteById(@PathVariable("id") Integer id) {
 		donatorRepo.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

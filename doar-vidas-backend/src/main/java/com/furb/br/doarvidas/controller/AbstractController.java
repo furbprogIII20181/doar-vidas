@@ -22,7 +22,7 @@ public abstract class AbstractController<P extends BasicPojo> {
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{id:[0-9][0-9]*}")
     public abstract ResponseEntity<?> deleteById(@PathVariable("id") Integer id);
 
-	@RequestMapping(method = RequestMethod.POST, value = "listAll", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.GET, value = "listAll", consumes = MediaType.APPLICATION_JSON_VALUE)
     public abstract ResponseEntity<?> listAll();
 	
 }

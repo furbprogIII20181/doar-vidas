@@ -18,7 +18,7 @@ export const environment = {
     saveDonation: "http://localhost:8080/rest/private/donation/save",
     donatorById: "http://localhost:8080/rest/public/donator",
     deleteSolicitation: "http://localhost:8080/rest/private/solicitation/",
-    darBaixa: "http://localhost:8080/rest/private/solicitation/baixa/"
+    darBaixa: "http://localhost:8080/rest/private/solicitation/baixa"
   }
 };
 
