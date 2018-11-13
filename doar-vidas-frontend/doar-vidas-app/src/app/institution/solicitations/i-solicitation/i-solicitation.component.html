@@ -34,7 +34,7 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <a mat-raised-button class="doeButton" color="warn">Excluir</a>
+      <a mat-raised-button class="doeButton" color="warn" (click)="deleteSolicitation(element.id)">Excluir</a>
       <a mat-raised-button class="doeButton" color="warn" (click)="openDialog(element)">Dar Baixa</a>
     </td>
   </ng-container>

@@ -15,7 +15,7 @@ import { Baixa } from "../../../model/baixa.model";
 export class ISolicitationComponent implements OnInit {
 
   solicitationsArray: Array<Solicitation>
-  
+
   solicitationsTable;
 
   constructor(
@@ -32,7 +32,7 @@ export class ISolicitationComponent implements OnInit {
             this.router.navigate(['/login']);
           }*/
     this.getAllSolicitations();
-    
+
     if (!!this.solicitationsTable) {
       this.solicitationsTable.filterPredicate = (data: any, filter: string) => {
         var str = this.getStringObject(data);
@@ -65,6 +65,13 @@ export class ISolicitationComponent implements OnInit {
       quantity: quantity
     }
     return this.solicitationsService.darBaixa(params).subscribe(
+      (data) => console.log(data),
+      (error) => this.globalService.handleError(error)
+    )
+  }
+
+  deleteSolicitation(id: number): void {
+    this.solicitationsService.deleteSolicitation(id).subscribe(
       (data) => console.log(data),
       (error) => this.globalService.handleError(error)
     )

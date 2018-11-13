@@ -5,13 +5,16 @@ import { environment } from '../../environments/environment';
 import { UserInfo } from '../model/uset.info.model';
 import { Router } from '@angular/router';
 import { DonatorPerson } from '../model/donator.person.model';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalService {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient,
+              private router: Router,
+              public snackBar: MatSnackBar) { }
 
   getIsLoggedin(): boolean {
     if (localStorage.getItem('access_token')) {
@@ -52,15 +55,21 @@ export class GlobalService {
   }
 
   handleError(error) {
-    if (error.error.error_description) {
-      alert(error.error.error_description)
-    } else {
-      alert(error.error.message)
-    }
+    // if (error.error.error_description) {
+    //   alert(error.error.error_description)
+    // } else {
+    //   alert(error.error.message)
+    // }
     if (error.status == 401) {
       localStorage.clear()
       this.router.navigate(['/login'])
     }
+    this.snackBar.open(error.message, '', {
+      // duration: 2000,
+      horizontalPosition: "right",
+      verticalPosition: "top",
+      panelClass: "error-snack"
+    })
   }
 
   convertBloodType(code: string): string {
