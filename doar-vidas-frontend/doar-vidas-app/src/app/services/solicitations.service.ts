@@ -5,6 +5,7 @@ import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { Donation } from "../model/donation.model";
 import { Router } from "@angular/router";
+import { Baixa } from "../model/baixa.model";
 
 @Injectable({
   providedIn: "root"
@@ -94,5 +95,17 @@ export class SolicitationsService {
     localStorage.setItem("institutionState", data.institution.state);
     localStorage.setItem("institutionDate", data.date);
     this.router.navigate(["/solicitations/success"]);
+  }
+
+  darBaixa(baixa: Baixa): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    };
+    let url = environment.api.darBaixa +
+      "?access_token=" +
+      localStorage.getItem("access_token");
+    return this.http.post(url, JSON.stringify(baixa), httpOptions)
   }
 }

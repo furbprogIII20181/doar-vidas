@@ -5,6 +5,7 @@ import { GlobalService } from "../../../services/global.service";
 import { Router } from "@angular/router";
 import { SolicitationsService } from "../../../services/solicitations.service";
 import { ModalBaixaComponent } from "./modal-baixa/modal-baixa.component";
+import { Baixa } from "../../../model/baixa.model";
 
 @Component({
   selector: 'app-i-solicitation',
@@ -52,10 +53,21 @@ export class ISolicitationComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       let qty = parseInt(result)
 
-      if (!isNaN(qty) && qty > 0) {
-        console.log(element.id, element.quantity);
+      if (!isNaN(qty) && qty > 0 && qty <= element.quantity) {
+        this.darBaixa(element.id, qty);
       }
     });
+  }
+
+  darBaixa(id:number, quantity:number): any {
+    let params: Baixa = {
+      id: id,
+      quantity: quantity
+    }
+    return this.solicitationsService.darBaixa(params).subscribe(
+      (data) => console.log(data),
+      (error) => this.globalService.handleError(error)
+    )
   }
 
   getAllSolicitations(): void {
