@@ -23,6 +23,7 @@ import { SuccessComponent } from './solicitations/solicitation/success/success.c
 import { ISolicitationComponent } from './institution/solicitations/i-solicitation/i-solicitation.component';
 import { DateFormat } from './date-format';
 import { ModalBaixaComponent } from './institution/solicitations/i-solicitation/modal-baixa/modal-baixa.component';
+import { NewSolicitationComponent } from './institution/solicitations/new-solicitation/new-solicitation.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ModalBaixaComponent } from './institution/solicitations/i-solicitation/
     ContactComponent,
     SuccessComponent,
     ISolicitationComponent,
-    ModalBaixaComponent
+    ModalBaixaComponent,
+    NewSolicitationComponent
   ],
   imports: [
     BrowserModule,

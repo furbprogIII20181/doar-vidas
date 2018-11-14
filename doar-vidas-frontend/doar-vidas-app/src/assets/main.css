@@ -1,9 +1,14 @@
 .mat-snack-bar-container.error-snack {
   background:#B00020;
 }
-.mat-snack-bar-container.blue-snackbar {
+.mat-snack-bar-container.blue-snack {
   background: #2196F3;
 }
-.mat-snack-bar-container.success-snackbar {
-  background: #1DE9B6;
+.mat-snack-bar-container.success-snack {
+  background: #28a745;
+}
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }

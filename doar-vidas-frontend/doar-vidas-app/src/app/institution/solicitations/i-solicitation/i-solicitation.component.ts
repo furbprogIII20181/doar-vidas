@@ -51,7 +51,7 @@ export class ISolicitationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      let qty = parseInt(result)
+      let qty = parseFloat(result)
 
       if (!isNaN(qty) && qty > 0 && qty <= element.quantity) {
         this.darBaixa(element.id, qty);
@@ -65,14 +65,20 @@ export class ISolicitationComponent implements OnInit {
       quantity: quantity
     }
     return this.solicitationsService.darBaixa(params).subscribe(
-      (data) => console.log(data),
+      (data) => {
+        this.getAllSolicitations()
+        this.globalService.handleSuccess(`Quantidade de sangue da Solicitação ${data.id} foi atualizada.`)
+      },
       (error) => this.globalService.handleError(error)
     )
   }
 
   deleteSolicitation(id: number): void {
     this.solicitationsService.deleteSolicitation(id).subscribe(
-      (data) => console.log(data),
+      (data) => {
+        this.getAllSolicitations()
+        this.globalService.handleSuccess(`Solicitação foi excluída.`)
+      },
       (error) => this.globalService.handleError(error)
     )
   }

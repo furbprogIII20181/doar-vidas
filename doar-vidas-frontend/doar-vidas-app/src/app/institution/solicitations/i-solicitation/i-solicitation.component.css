@@ -9,6 +9,11 @@ table {
   float: right;
 }
 
+.new-solicitation {
+  margin: 2rem 1rem 0 0;
+  float: right;
+}
+
 .doeButton {
   float: right;
   margin-left: 5px;

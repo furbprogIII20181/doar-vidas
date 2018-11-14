@@ -8,6 +8,7 @@ import { DonatorsComponent } from "./donators/donators.component";
 import { ContactComponent } from "./contact/contact.component";
 import { SuccessComponent } from "./solicitations/solicitation/success/success.component";
 import { ISolicitationComponent } from "./institution/solicitations/i-solicitation/i-solicitation.component";
+import { NewSolicitationComponent } from "./institution/solicitations/new-solicitation/new-solicitation.component";
 
 export const ROUTES: Routes = [
   { path: "", component: HomeComponent },
@@ -18,5 +19,6 @@ export const ROUTES: Routes = [
   { path: "solicitations/:id", component: SolicitationComponent },
   { path: "donators", component: DonatorsComponent },
   { path: "donators/:id", component: ContactComponent },
-  { path: "institution/solicitations", component: ISolicitationComponent }
+  { path: "institution/solicitations", component: ISolicitationComponent },
+  { path: "institution/solicitations/new", component: NewSolicitationComponent }
 ];

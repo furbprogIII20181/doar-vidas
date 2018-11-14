@@ -12,9 +12,11 @@ import { MatSnackBar } from '@angular/material';
 })
 export class GlobalService {
 
-  constructor(private http: HttpClient,
-              private router: Router,
-              public snackBar: MatSnackBar) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    public snackBar: MatSnackBar
+  ) { }
 
   getIsLoggedin(): boolean {
     if (localStorage.getItem('access_token')) {
@@ -65,10 +67,19 @@ export class GlobalService {
       this.router.navigate(['/login'])
     }
     this.snackBar.open(error.message, '', {
-      // duration: 2000,
+      duration: 3000,
       horizontalPosition: "right",
       verticalPosition: "top",
       panelClass: "error-snack"
+    })
+  }
+
+  handleSuccess(message) {
+    this.snackBar.open(message, '', {
+      duration: 3000,
+      horizontalPosition: "right",
+      verticalPosition: "top",
+      panelClass: "success-snack"
     })
   }
 
