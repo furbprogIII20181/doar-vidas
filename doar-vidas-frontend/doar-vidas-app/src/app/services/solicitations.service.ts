@@ -108,4 +108,17 @@ export class SolicitationsService {
       localStorage.getItem("access_token");
     return this.http.post(url, JSON.stringify(baixa), httpOptions)
   }
+
+  saveSolicitation(solicitationData: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    };
+    let url = environment.api.saveSolicitation
+      + "?access_token="
+      + localStorage.getItem('access_token')
+      
+    return this.http.put(url, JSON.stringify(solicitationData), httpOptions);
+  }
 }

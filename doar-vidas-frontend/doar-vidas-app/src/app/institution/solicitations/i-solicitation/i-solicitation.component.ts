@@ -51,17 +51,23 @@ export class ISolicitationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      
+      if (typeof result == 'undefined') return
+
       let qty = parseFloat(result)
 
       if (!isNaN(qty) && qty > 0 && qty <= element.quantity) {
-        this.darBaixa(element.id, qty);
+        this.darBaixa(element, qty);
+      } else {
+        this.globalService.handleErrorMessage(`Quantidade inválida`)
+        this.openDialog(element)
       }
     });
   }
 
-  darBaixa(id:number, quantity:number): any {
+  darBaixa(element, quantity:number): any {
     let params: Baixa = {
-      id: id,
+      id: element.id,
       quantity: quantity
     }
     return this.solicitationsService.darBaixa(params).subscribe(
@@ -69,18 +75,24 @@ export class ISolicitationComponent implements OnInit {
         this.getAllSolicitations()
         this.globalService.handleSuccess(`Quantidade de sangue da Solicitação ${data.id} foi atualizada.`)
       },
-      (error) => this.globalService.handleError(error)
+      (error) => {
+        console.log(error)
+        this.openDialog(element)
+        this.globalService.handleError(error)
+      }
     )
   }
 
   deleteSolicitation(id: number): void {
-    this.solicitationsService.deleteSolicitation(id).subscribe(
-      (data) => {
-        this.getAllSolicitations()
-        this.globalService.handleSuccess(`Solicitação foi excluída.`)
-      },
-      (error) => this.globalService.handleError(error)
-    )
+    if(confirm(`Você realmente deseja excluir a solicitação ${id}?`)) {
+      this.solicitationsService.deleteSolicitation(id).subscribe(
+        (data) => {
+          this.getAllSolicitations()
+          this.globalService.handleSuccess(`Solicitação foi excluída.`)
+        },
+        (error) => this.globalService.handleError(error)
+      )
+    }
   }
 
   getAllSolicitations(): void {

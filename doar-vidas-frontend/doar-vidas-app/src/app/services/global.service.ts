@@ -66,7 +66,11 @@ export class GlobalService {
       localStorage.clear()
       this.router.navigate(['/login'])
     }
-    this.snackBar.open(error.message, '', {
+    this.handleErrorMessage(error.message)
+  }
+  
+  handleErrorMessage(message) {
+    this.snackBar.open(message, '', {
       duration: 3000,
       horizontalPosition: "right",
       verticalPosition: "top",

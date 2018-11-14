@@ -43,13 +43,11 @@ export class LoginComponent implements OnInit {
       (data) => { 
         localStorage.setItem('user_info', JSON.stringify(data))
         this.globalService.handleSuccess(`Bem vindo, ${data.name}`)
-        setTimeout(function(){
-          if (data.type == 'D') {
-            this.router.navigate(['/solicitations']);
-          } else {
-            this.router.navigate(['/donators']);
-          }
-        }, 2500)
+        if (data.type == 'D') {
+          this.router.navigate(['/solicitations']);
+        } else {
+          this.router.navigate(['/donators']);
+        }
       },
       (error) => this.globalService.handleError(error)
     )

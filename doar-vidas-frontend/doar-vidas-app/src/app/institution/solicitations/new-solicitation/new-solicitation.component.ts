@@ -40,8 +40,28 @@ export class NewSolicitationComponent implements OnInit {
     })
   }
 
-  cancel() {
+  back() {
     this.location.back(); // <-- go back to previous location on cancel
+  }
+
+  onSubmit() {
+    if (this.newSolicitationForm.valid) {
+      let qty = parseFloat(this.newSolicitationForm.get('quantity').value)
+
+      if (!isNaN(qty) && qty > 0) {
+        this.solicitationsService.saveSolicitation(this.newSolicitationForm.value)
+        .subscribe(
+          (data) => {
+            this.globalService.handleSuccess(`Solicitação de doação do sangue tipo ${this.globalService.convertBloodType(data.bloodType)} foi salva.`)
+            this.back()
+          },
+          (error) => this.globalService.handleError(error)
+        )
+      } else {
+        this.globalService.handleErrorMessage(`Quantidade inválida`)
+      } 
+    }
+    return false
   }
 
 }
