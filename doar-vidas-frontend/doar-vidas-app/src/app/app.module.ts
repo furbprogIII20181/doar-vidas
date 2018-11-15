@@ -24,6 +24,7 @@ import { ISolicitationComponent } from './institution/solicitations/i-solicitati
 import { DateFormat } from './date-format';
 import { ModalBaixaComponent } from './institution/solicitations/i-solicitation/modal-baixa/modal-baixa.component';
 import { NewSolicitationComponent } from './institution/solicitations/new-solicitation/new-solicitation.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { NewSolicitationComponent } from './institution/solicitations/new-solici
     SuccessComponent,
     ISolicitationComponent,
     ModalBaixaComponent,
-    NewSolicitationComponent
+    NewSolicitationComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
