@@ -6,17 +6,17 @@
         alt="imgPerfil">
     </div>
     <div>
-      <h1 class="institutionTitle">{{ donator.name }} {{ donator.lastName }}</h1>
-      <h2 class="institutionSubTitle">{{ donator.city }} - {{ donator.state }}</h2>
-      <h2 class="institutionSubTitle">{{ getMappedBlood(donator.bloodType) }}</h2>
-      <h1 class="institutionTitle">{{ donator.phone }}</h1>
+      <h1 class="institutionTitle">{{ donator?.name }} {{ donator?.lastName }}</h1>
+      <h2 class="institutionSubTitle">{{ donator?.city }} - {{ donator?.state }}</h2>
+      <h2 class="institutionSubTitle">{{ getMappedBlood(donator?.bloodType) }}</h2>
+      <h1 class="institutionTitle">{{ donator?.phone }}</h1>
     </div>
   </div>
 
   <div class="row">
     <div class="leftDiv">
       <p>
-        {{ donator.description }}
+        {{ donator?.description }}
       </p>
     </div>
   </div>
