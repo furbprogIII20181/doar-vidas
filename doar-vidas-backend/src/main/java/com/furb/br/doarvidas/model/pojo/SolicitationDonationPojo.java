@@ -2,11 +2,16 @@ package com.furb.br.doarvidas.model.pojo;
 
 import com.furb.br.doarvidas.model.domain.BloodType;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Represents a customized Solicitation
  * 
  * @author mawippel2@hotmail.com
  */
+@Getter
+@Setter
 public class SolicitationDonationPojo extends BasicPojo {
 
 	private Integer id;
@@ -17,54 +22,5 @@ public class SolicitationDonationPojo extends BasicPojo {
 	private String state;
 	private String description;
 	private BloodType bloodType;
-	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public Integer getInstitutionId() {
-		return institutionId;
-	}
-	public void setInstitutionId(Integer institutionId) {
-		this.institutionId = institutionId;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public BloodType getBloodType() {
-		return bloodType;
-	}
-	public void setBloodType(BloodType bloodType) {
-		this.bloodType = bloodType;
-	}
 	
 }

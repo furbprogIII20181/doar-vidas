@@ -11,11 +11,16 @@ import com.furb.br.doarvidas.model.entities.BasicEntity;
 import com.furb.br.doarvidas.model.entities.DonatorEntity;
 import com.furb.br.doarvidas.model.entities.InstitutionEntity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Represents a Donation
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class Donation extends BasicEntity {
 
@@ -28,28 +33,4 @@ public abstract class Donation extends BasicEntity {
 	@Column(nullable = false)
 	private Date date;
 
-	public DonatorEntity getDonator() {
-		return donator;
-	}
-
-	public void setDonator(DonatorEntity donator) {
-		this.donator = donator;
-	}
-
-	public InstitutionEntity getInstitution() {
-		return institution;
-	}
-
-	public void setInstitution(InstitutionEntity institution) {
-		this.institution = institution;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	
 }

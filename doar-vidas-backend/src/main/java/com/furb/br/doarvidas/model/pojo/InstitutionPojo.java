@@ -2,11 +2,16 @@ package com.furb.br.doarvidas.model.pojo;
 
 import com.furb.br.doarvidas.model.entities.InstitutionEntity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Pojo for {@link InstitutionEntity}
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */
+@Getter
+@Setter
 public class InstitutionPojo extends PersonPojo {
 
 	public InstitutionPojo() {

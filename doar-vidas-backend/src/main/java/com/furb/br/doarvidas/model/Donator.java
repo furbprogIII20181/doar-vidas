@@ -6,11 +6,16 @@ import javax.persistence.MappedSuperclass;
 
 import com.furb.br.doarvidas.model.domain.BloodType;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Represents a Donator
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class Donator extends Person {
 
@@ -18,12 +23,4 @@ public abstract class Donator extends Person {
 	@Column
 	private BloodType bloodType;
 
-	public BloodType getBloodType() {
-		return bloodType;
-	}
-
-	public void setBloodType(BloodType bloodType) {
-		this.bloodType = bloodType;
-	}
-	
 }

@@ -10,11 +10,16 @@ import com.furb.br.doarvidas.model.domain.BloodType;
 import com.furb.br.doarvidas.model.entities.BasicEntity;
 import com.furb.br.doarvidas.model.entities.InstitutionEntity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Represents a solicitation of a {@link Donation}
  * 
  * @author Marcelo Wippel (mawippel2@hotmail.com)
  */
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class Solicitation extends BasicEntity {
 
@@ -28,28 +33,4 @@ public abstract class Solicitation extends BasicEntity {
 	@Column(nullable = false)
 	private Double quantity;
 
-	public InstitutionEntity getInstitution() {
-		return institution;
-	}
-
-	public void setInstitution(InstitutionEntity institution) {
-		this.institution = institution;
-	}
-
-	public BloodType getBloodType() {
-		return bloodType;
-	}
-
-	public void setBloodType(BloodType bloodType) {
-		this.bloodType = bloodType;
-	}
-
-	public Double getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Double quantity) {
-		this.quantity = quantity;
-	}
-	
 }
