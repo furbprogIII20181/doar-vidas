@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { GlobalService } from '../services/global.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  user: any;
+
+  constructor(private userService: UserService, private globalService: GlobalService) { }
 
   ngOnInit() {
+    this.getUserInfo();
+  }
+
+  getUserInfo (){
+    let id = JSON.parse(localStorage.getItem('user_info')).id;
+    this.userService
+      .getUserInfo(id)
+      .subscribe(
+        response => this.user = response,
+        (error) => this.globalService.handleError(error)
+      )
   }
 
 }
