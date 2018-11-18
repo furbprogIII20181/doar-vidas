@@ -50,6 +50,7 @@ public class MyUserController {
 			pojo.setCity(person.getCity());
 			pojo.setDescription(person.getDescription());
 			pojo.setCpfCnpj(person.getCpfCnpj());
+			pojo.setEmail(person.getUser().getEmail());
 			
 			if (person instanceof DonatorEntity) {
 				pojo.setBloodType(((DonatorEntity) person).getBloodType());

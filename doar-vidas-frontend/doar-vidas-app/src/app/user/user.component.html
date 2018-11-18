@@ -1,53 +1,23 @@
 <section class="user">
-  <mat-card>
+  <mat-card class="userCard">
     <div class="row">
       <div class="img">
         <img class="iconImg" src="http://desviantes.blob.core.windows.net/desviantes/production/media/uploads/cachoeira_do_robert%C3%A3o_-_amparo_-_rj.jpg"
         alt="imgPerfil">
       </div>
       <div class="user-name">
-        <h1>Marcelo Wippel</h1>
-        <a href="#">Editar informações</a>
+        <h1 class="userTitle">Marcelo Wippel</h1>
+        <a class="userSubtitle" href="#">Editar informações</a>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <p>Tipo Sanguíneo: A+</p>
-        <p>Telefone: (47) 99999-9999</p>
-        <p>E-mail: teste@teste.com</p>
-        <p>CPF: 084.202.569-35</p>
-        <p>Cidade: Blumenau</p>
-        <p>UF: Santa Catarina</p>
-        <a href="#"><< Voltar ao início</a>
-      </div>
-      <div class="col">
-        <h3>Doações Marcadas:</h3>
-        <ul>
-          <li>
-            <p>HEMOSC - Blumenau - SC</p>
-            <p>Data da Doação: 25/09/2019</p>
-          </li>
-          <li>
-            <p>HEMOSC - Blumenau - SC</p>
-            <p>Data da Doação: 25/09/2019</p>
-          </li>
-          <li>
-            <p>HEMOSC - Blumenau - SC</p>
-            <p>Data da Doação: 25/09/2019</p>
-          </li>
-          <li>
-            <p>HEMOSC - Blumenau - SC</p>
-            <p>Data da Doação: 25/09/2019</p>
-          </li>
-          <li>
-            <p>HEMOSC - Blumenau - SC</p>
-            <p>Data da Doação: 25/09/2019</p>
-          </li>
-          <li>
-            <p>HEMOSC - Blumenau - SC</p>
-            <p>Data da Doação: 25/09/2019</p>
-          </li>
-        </ul>
+        <p>Tipo Sanguíneo: {{ getMappedBlood(user?.bloodType) }}</p>
+        <p>Telefone: {{ user?.phone }}</p>
+        <p>E-mail: {{ user?.email }}</p>
+        <p>CPF: {{ user?.cpfCnpj }}</p>
+        <p>Cidade: {{ user?.city }}</p>
+        <p>UF: {{ user?.state }}</p>
       </div>
     </div>
   </mat-card>

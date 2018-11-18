@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { GlobalService } from '../services/global.service';
+import { MyUser } from '../model/myuser.model';
 
 @Component({
   selector: 'app-user',
@@ -25,6 +26,10 @@ export class UserComponent implements OnInit {
         response => this.user = response,
         (error) => this.globalService.handleError(error)
       )
+  }
+
+  getMappedBlood(bloodType: string): string {
+    return this.globalService.convertBloodType(bloodType)
   }
 
 }

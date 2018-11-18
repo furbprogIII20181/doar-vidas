@@ -1,13 +1,19 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class LoginService {
     constructor(private http: HttpClient){}
+
+    private isLoggedInListener = new Subject<boolean>();
+
+    getIsLoggedInListener() {
+        return this.isLoggedInListener.asObservable();
+    }
 
     loginAction(login:any): Observable<any> {
         const httpOptions = {
@@ -18,4 +24,9 @@ export class LoginService {
         }
         return this.http.post<any>(environment.api.login, login.toString(), httpOptions);
     }
+
+    onSuccess(){
+        this.isLoggedInListener.next(true);
+    }
+
  }

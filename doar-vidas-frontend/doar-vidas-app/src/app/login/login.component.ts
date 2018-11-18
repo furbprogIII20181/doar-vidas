@@ -32,7 +32,10 @@ export class LoginComponent implements OnInit {
       .set(`grant_type`, `password`);
 
     this.loginService.loginAction(body).subscribe(
-      (data) => this.onSuccess(data),
+      (data) => {
+        this.loginService.onSuccess();
+        this.onSuccess(data);
+      },
       (error) => this.globalService.handleError(error)
     )
   }
@@ -41,7 +44,8 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('access_token',data.access_token)
     this.globalService.getUserByEmail(this.loginForm.get('email').value).subscribe (
       (data) => { 
-        localStorage.setItem('user_info', JSON.stringify(data))
+        localStorage.setItem('user_info', JSON.stringify(data));
+        
         this.globalService.handleSuccess(`Bem vindo, ${data.name}`)
         if (data.type == 'D') {
           this.router.navigate(['/solicitations']);

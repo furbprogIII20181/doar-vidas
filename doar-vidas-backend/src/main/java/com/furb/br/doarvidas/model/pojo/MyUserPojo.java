@@ -15,6 +15,7 @@ public class MyUserPojo extends BasicPojo {
 	private String state;
 	private String phone;
 	private String description;
+	private String email;
 	private Long cpfCnpj;
 	private BloodType bloodType;
 	

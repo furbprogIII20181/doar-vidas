@@ -1,7 +1,7 @@
 <header role="banner">
   <mat-toolbar color="warn">
     <mat-toolbar-row>
-      <div fxShow="true" fxHide.gt-sm="true">
+      <div *ngIf="isLoggedIn" fxShow="true" fxHide.gt-sm="true">
         <button mat-flat-button color="warn" role="button" class="btn btn-menu" (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
