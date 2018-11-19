@@ -64,7 +64,7 @@ public class MyUserController {
 	
 	// TODO testar se este metodo funciona
 	@PatchMapping("/update/{id}")
-	public ResponseEntity<?> partialUpdateName(@PathVariable("id") UserUpdatePojo pojo, @RequestBody Integer id) {
+	public ResponseEntity<?> partialUpdateName(@PathVariable("id") Integer id, @RequestBody UserUpdatePojo pojo) {
 		Optional<Person> personPojo = personRepo.findById(id);
 		if (personPojo.isPresent()) {
 			Person person = personPojo.get();
