@@ -1,39 +1,54 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-main{
+main {
   height: 92.5%;
 }
 .btn-menu {
-    min-width: 60px;
-    padding:0;
+  min-width: 60px;
+  padding: 0;
 }
 .mat-toolbar-row {
-  padding:0;
+  display: block;
+  position: relative;
+  padding: 0;
 }
 .sidenav-container {
   height: 100%;
 }
 .sidenav-container .sidenav-content {
-  width:20%;
+  width: 20%;
+}
+.menu-class {
+  float: left;
+  margin-top: 10px;
+  margin-right: 5px;
 }
 .logo-container {
-    flex:0 0 90%;
-    text-align: center;
+  position: absolute;
+  left: 45%;
+  top: 25%;
+  flex: 0 0 90%;
+  text-align: center;
+}
+.user-options {
+  float: right;
+  margin-top: 10px;
+  margin-right: 5px;
 }
 .logo-container a {
-    color:#fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 .logo-container a:hover,
 .logo-container a:active,
 .logo-container a:focus {
-    text-decoration: none;
+  text-decoration: none;
 }
 .user-container {
-    width:10%;
+  width: 10%;
 }
-@media only screen and (max-width:440px) {
+@media only screen and (max-width: 440px) {
   .sidenav-container .sidenav-content {
-    width:30%;
+    width: 30%;
   }
 }
