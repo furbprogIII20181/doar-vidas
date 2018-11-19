@@ -10,6 +10,7 @@ import { SuccessComponent } from "./solicitations/solicitation/success/success.c
 import { ISolicitationComponent } from "./institution/solicitations/i-solicitation/i-solicitation.component";
 import { NewSolicitationComponent } from "./institution/solicitations/new-solicitation/new-solicitation.component";
 import { UserComponent } from "./user/user.component";
+import { UserEditComponent } from "./user/user-edit/user-edit.component";
 
 export const ROUTES: Routes = [
   { path: "", component: HomeComponent },
@@ -22,5 +23,6 @@ export const ROUTES: Routes = [
   { path: "donators/:id", component: ContactComponent },
   { path: "institution/solicitations", component: ISolicitationComponent },
   { path: "institution/solicitations/new", component: NewSolicitationComponent },
-  { path: "user", component: UserComponent }
+  { path: "user", component: UserComponent },
+  { path: "user/edit", component: UserEditComponent }
 ];
