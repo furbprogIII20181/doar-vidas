@@ -25,6 +25,7 @@ import { DateFormat } from './date-format';
 import { ModalBaixaComponent } from './institution/solicitations/i-solicitation/modal-baixa/modal-baixa.component';
 import { NewSolicitationComponent } from './institution/solicitations/new-solicitation/new-solicitation.component';
 import { UserComponent } from './user/user.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { UserComponent } from './user/user.component';
     ISolicitationComponent,
     ModalBaixaComponent,
     NewSolicitationComponent,
-    UserComponent
+    UserComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

@@ -6,16 +6,16 @@
         alt="imgPerfil">
       </div>
       <div class="user-name">
-        <h1 class="userTitle">Marcelo Wippel</h1>
-        <a class="userSubtitle" href="#">Editar informações</a>
+        <h1 class="userTitle">{{user?.name}} {{user?.lastName}}</h1>
+        <a class="userSubtitle" [routerLink]="['/user/edit']">Editar informações</a>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <p>Tipo Sanguíneo: {{ getMappedBlood(user?.bloodType) }}</p>
+        <p *ngIf="user?.bloodType">Tipo Sanguíneo: {{ getMappedBlood(user?.bloodType) }}</p>
         <p>Telefone: {{ user?.phone }}</p>
         <p>E-mail: {{ user?.email }}</p>
-        <p>CPF: {{ user?.cpfCnpj }}</p>
+        <p>CPF/CNPJ: {{ user?.cpfCnpj }}</p>
         <p>Cidade: {{ user?.city }}</p>
         <p>UF: {{ user?.state }}</p>
       </div>
