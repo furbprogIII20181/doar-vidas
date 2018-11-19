@@ -1,13 +1,35 @@
 <header role="banner">
   <mat-toolbar color="warn">
     <mat-toolbar-row>
-      <div *ngIf="isLoggedIn" fxShow="true" fxHide.gt-sm="true">
-        <button mat-flat-button color="warn" role="button" class="btn btn-menu" (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
+      <div class="menu-class" fxShow="true" fxHide.gt-sm="true">
+        <button
+          mat-flat-button
+          color="warn"
+          role="button"
+          class="btn btn-menu"
+          (click)="sidenav.toggle()"
+        >
+          <mat-icon>menu</mat-icon>
         </button>
       </div>
       <div class="logo-container">
-        <a [routerLink]="['/']" role="logo">{{title}}</a>
+        <a [routerLink]="['/']" role="logo">{{ title }}</a>
+      </div>
+
+      <div class="user-options">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>person</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>person</mat-icon>
+            <span>Minha conta</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>transfer_within_a_station</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
@@ -15,7 +37,7 @@
 <main id="main-content" class="main-content" role="main">
   <mat-sidenav-container fxFlexFill class="sidenav-container">
     <mat-sidenav #sidenav fxLayout="column" class="sidenav-content">
-        <app-menu></app-menu>
+      <app-menu></app-menu>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
       <router-outlet></router-outlet>
