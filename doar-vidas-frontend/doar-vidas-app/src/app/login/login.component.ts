@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
 
     this.loginService.loginAction(body).subscribe(
       (data) => {
-        this.loginService.onSuccess();
         this.onSuccess(data);
+        this.loginService.onSuccess();
       },
       (error) => this.globalService.handleError(error)
     )
