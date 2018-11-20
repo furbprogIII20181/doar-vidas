@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../services/global.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DonatorsService } from '../services/donators.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-contact',
@@ -16,13 +17,14 @@ export class ContactComponent implements OnInit {
     private globalService: GlobalService,
     private router: Router,
     private route: ActivatedRoute,
-    private donatorsService: DonatorsService
+    private donatorsService: DonatorsService,
+    private location: Location
   ) {}
 
   ngOnInit() {
-    //if (!this.globalService.getIsLoggedin()) {
-    //  this.router.navigate(['/login']);
-    //}
+    if (!this.globalService.getIsLoggedin()) {
+     this.router.navigate(['/login']);
+    }
     this.getDonatorInfo()
   }
 
@@ -39,6 +41,10 @@ export class ContactComponent implements OnInit {
 
   getMappedBlood(bloodType: string): string {
     return this.globalService.convertBloodType(bloodType)
+  }
+
+  back() {
+    this.location.back(); // <-- go back to previous location on cancel
   }
 
 }

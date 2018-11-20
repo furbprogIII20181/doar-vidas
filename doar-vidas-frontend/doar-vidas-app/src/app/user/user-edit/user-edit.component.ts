@@ -6,6 +6,8 @@ import { MyUser } from '../../model/myuser.model';
 import { StatesService } from '../../services/states.service';
 import { State } from '../../model/state.model';
 import { BloodType } from '../../model/blood.type.model';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-edit',
@@ -18,6 +20,12 @@ export class UserEditComponent implements OnInit {
   editForm: FormGroup
   statesObject: Array<State>
   userState: any
+
+  labelCpf = "* Cpf"
+
+  labelName = "* Nome"
+
+  labelLastname = "* Sobrenome"
 
   bloodTypes: BloodType[] = [
     {code: 'APOS', description: 'A+'},
@@ -34,20 +42,25 @@ export class UserEditComponent implements OnInit {
     private userService: UserService,
     private globalService: GlobalService,
     private formBuilder: FormBuilder,
-    private statesService: StatesService
+    private statesService: StatesService,
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    if (!this.globalService.getIsLoggedin()) {
+      this.router.navigate(['/login'])
+    }
     this.getStates()
     this.editForm = this.formBuilder.group({
-      name: this.formBuilder.control('',[Validators.required, Validators.minLength(3)]),
-      lastName: this.formBuilder.control('',[Validators.required, Validators.minLength(3)]),
-      email: this.formBuilder.control('', [Validators.required, Validators.email]),
+      name: this.formBuilder.control({value:'', disabled: true},[Validators.required, Validators.minLength(3)]),
+      lastName: this.formBuilder.control({value:'', disabled: true},[Validators.required, Validators.minLength(3)]),
+      email: this.formBuilder.control({value:'', disabled: true}, [Validators.required, Validators.email]),
       phone: this.formBuilder.control('',[Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
-      cpfCnpj: this.formBuilder.control('',[Validators.required]),
+      cpfCnpj: this.formBuilder.control({value:'', disabled: true},[Validators.required]),
       state: this.formBuilder.control('', [Validators.required]),
       city: this.formBuilder.control('',[Validators.required]),
-      bloodType: this.formBuilder.control('',[Validators.required]),
+      bloodType: this.formBuilder.control({value:'', disabled: true},[Validators.required]),
       description: this.formBuilder.control('',[Validators.required])
     })
   }
@@ -62,16 +75,18 @@ export class UserEditComponent implements OnInit {
   }
 
   getUserInfo (){
-    let id = JSON.parse(localStorage.getItem('user_info')).id;
-    this.userService
-      .getUserInfo(id)
-      .subscribe(
-        response => {
-          this.user = response
-          this.populateForm()
-        },
-        (error) => this.globalService.handleError(error)
-      )
+    if (this.globalService.getIsLoggedin()) {
+      let id = JSON.parse(localStorage.getItem('user_info')).id;
+      this.userService
+        .getUserInfo(id)
+        .subscribe(
+          response => {
+            this.user = response
+            this.populateForm()
+          },
+          (error) => this.globalService.handleError(error)
+        )
+    }
   }
 
   populateForm () {
@@ -88,6 +103,10 @@ export class UserEditComponent implements OnInit {
 
   onSubmit() {
     console.log(this.editForm.value)
+  }
+
+  back() {
+    this.location.back();
   }
 
 }

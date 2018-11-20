@@ -19,7 +19,7 @@ export class RegisterService {
         'Content-Type':  'application/json'
       })
     }
-    return this.http.post<Donator>(environment.api.registerDonator, JSON.stringify(donator), httpOptions)
+    return this.http.put<Donator>(environment.api.registerDonator, JSON.stringify(donator), httpOptions)
   }
 
   registerInstitution(institution: Institution): Observable<Institution> {
@@ -28,6 +28,6 @@ export class RegisterService {
         'Content-Type':  'application/json'
       })
     }
-    return this.http.post<Institution>(environment.api.registerInstitution, JSON.stringify(institution), httpOptions)
+    return this.http.put<Institution>(environment.api.registerInstitution, JSON.stringify(institution), httpOptions)
   }
 }

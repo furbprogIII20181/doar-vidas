@@ -18,9 +18,9 @@ export class DonatorsComponent implements OnInit {
   constructor(private globalService: GlobalService, private router: Router) { }
 
   ngOnInit() {
-    //if (!this.globalService.getIsLoggedin()) {
-      //this.router.navigate(['/login']);
-    //}
+    if (!this.globalService.getIsLoggedin()) {
+      this.router.navigate(['/login']);
+    }
     this.getDonatorsAll();
   }
 

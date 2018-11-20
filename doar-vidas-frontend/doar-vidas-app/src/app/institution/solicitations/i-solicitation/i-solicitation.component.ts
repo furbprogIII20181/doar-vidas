@@ -28,9 +28,9 @@ export class ISolicitationComponent implements OnInit {
   quantiy: number = 0
 
   ngOnInit() {
-    /*if (!this.globalService.getIsLoggedin()) {
-            this.router.navigate(['/login']);
-          }*/
+    if (!this.globalService.getIsLoggedin()) {
+      this.router.navigate(['/login']);
+    }
     this.getAllSolicitations();
 
     if (!!this.solicitationsTable) {

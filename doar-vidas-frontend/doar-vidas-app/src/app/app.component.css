@@ -27,7 +27,6 @@ main {
   position: absolute;
   left: 45%;
   top: 25%;
-  flex: 0 0 90%;
   text-align: center;
 }
 .user-options {

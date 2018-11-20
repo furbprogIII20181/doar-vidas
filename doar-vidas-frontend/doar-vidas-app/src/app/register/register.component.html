@@ -91,7 +91,7 @@
     </form>
     <mat-card-actions class="register-actions">
       <button class="button" mat-button (click)="cancel()"><< Voltar</button>
-      <button role="button" color="warn" (click)="onSubmit()" mat-flat-button class="button">Cadastrar</button>
+      <button role="button" color="warn" (click)="onSubmit()" mat-flat-button class="button" [disabled]="!registerForm.valid">Cadastrar</button>
     </mat-card-actions>
   </mat-card>
 </section>

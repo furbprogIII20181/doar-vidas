@@ -92,17 +92,21 @@ export class RegisterComponent implements OnInit {
 
   onChanges(): void {
     this.registerForm.get('personType').valueChanges.subscribe(val => {
+      const bloodControl = this.registerForm.get('bloodType')
       if (val == 'D') {
         this.registerForm.get('cpfCnpj').setValidators(Validators.pattern(this.cpfPattern))
         this.labelCpf = "* Cpf"
         this.labelName = "* Nome"
         this.labelLastname = "* Sobrenome"
+        bloodControl.setValidators(Validators.required)
       } else {
         this.registerForm.get('cpfCnpj').setValidators(Validators.pattern(this.cnpjPattern))
         this.labelCpf = "* Cnpj"
         this.labelName = "* Nome Fantasia"
         this.labelLastname = "* Razão Social"
+        bloodControl.clearValidators()
       }
+      bloodControl.updateValueAndValidity();
     });
   }
 
@@ -114,7 +118,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     // Verificar por que quando for instituição não está validando
-    // if (this.registerForm.valid) {
+    if (this.registerForm.valid) {
       let cpfCnpj = this.registerForm.get('cpfCnpj').value
       this.registerForm.get('cpfCnpj').setValue(cpfCnpj.replace(/\D/g,''))
       if (this.registerForm.get('bloodType').value.length) {
@@ -122,7 +126,7 @@ export class RegisterComponent implements OnInit {
       } else {
         this.registerInstitution(this.registerForm.value)
       }
-    // }
+    }
     return false
   }
 

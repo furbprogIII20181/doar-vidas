@@ -8,25 +8,21 @@
         <div class="field">
             <mat-form-field>
                 <input matInput formControlName="name" [placeholder]="labelName" autocomplete="off">
-                <mat-error *ngIf="!editForm.get('name').valid && editForm.get('name').dirty">Nome é obrigatório</mat-error>
             </mat-form-field>
         </div>
         <div class="field">
             <mat-form-field>
                 <input matInput formControlName="lastName" [placeholder]="labelLastname" autocomplete="off">
-                <mat-error *ngIf="!editForm.get('lastName').valid && editForm.get('lastName').dirty">Sobrenome é obrigatório</mat-error>
             </mat-form-field>
         </div>
         <div class="field">
             <mat-form-field>
                 <input matInput formControlName="email" placeholder="* E-mail" autocomplete="off">
-                <mat-error *ngIf="!editForm.get('email').valid && editForm.get('email').dirty">E-mail com o formato incorreto. Ex.: demo@demo.com</mat-error>
             </mat-form-field>
         </div>
         <div class="field">
             <mat-form-field>
                 <input matInput formControlName="cpfCnpj" [placeholder]="labelCpf" autocomplete="off" type="tel">
-                <mat-error *ngIf="!editForm.get('cpfCnpj').valid && editForm.get('cpfCnpj').dirty">CPF ou CNPJ inválido.</mat-error>
             </mat-form-field>
         </div>
         <div class="field">
@@ -67,8 +63,8 @@
       </mat-card-content>
     </form>
     <mat-card-actions class="register-actions">
-      <button class="button" mat-button (click)="cancel()"><< Voltar</button>
-      <button role="button" color="warn" (click)="onSubmit()" mat-flat-button class="button">Cadastrar</button>
+      <button class="button" mat-button (click)="back()"><< Voltar</button>
+      <button role="button" color="warn" (click)="onSubmit()" mat-flat-button class="button">Salvar</button>
     </mat-card-actions>
   </mat-card>
 </section>
