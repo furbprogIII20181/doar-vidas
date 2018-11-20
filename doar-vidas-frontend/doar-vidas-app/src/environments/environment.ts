@@ -20,7 +20,8 @@ export const environment = {
     deleteSolicitation: "http://localhost:8080/rest/private/solicitation/",
     darBaixa: "http://localhost:8080/rest/private/solicitation/baixa",
     saveSolicitation: "http://localhost:8080/rest/private/solicitation/save",
-    getMyUserInfo: "http://localhost:8080/rest/private/user"
+    getMyUserInfo: "http://localhost:8080/rest/private/user",
+    updateUserInfo: "http://localhost:8080/rest/private/user/update"
   }
 };
 

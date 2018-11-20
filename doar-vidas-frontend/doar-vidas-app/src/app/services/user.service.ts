@@ -20,4 +20,15 @@ export class UserService {
     return this.http.get<any>(url, httpOptions)
   }
 
+  updateUserInfo(body: any, id:number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+    let url = environment.api.updateUserInfo + '/'+id+'?access_token=' + localStorage.getItem('access_token')
+
+    return this.http.patch(url, JSON.stringify(body), httpOptions)
+  }
+
 }

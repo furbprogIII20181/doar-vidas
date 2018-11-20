@@ -20,6 +20,7 @@ export class UserEditComponent implements OnInit {
   editForm: FormGroup
   statesObject: Array<State>
   userState: any
+  personId: number
 
   labelCpf = "* Cpf"
 
@@ -53,6 +54,7 @@ export class UserEditComponent implements OnInit {
     }
     this.getStates()
     this.editForm = this.formBuilder.group({
+      id: this.formBuilder.control(this.getPersonId(),[Validators.required]),
       name: this.formBuilder.control({value:'', disabled: true},[Validators.required, Validators.minLength(3)]),
       lastName: this.formBuilder.control({value:'', disabled: true},[Validators.required, Validators.minLength(3)]),
       email: this.formBuilder.control({value:'', disabled: true}, [Validators.required, Validators.email]),
@@ -63,6 +65,11 @@ export class UserEditComponent implements OnInit {
       bloodType: this.formBuilder.control({value:'', disabled: true},[Validators.required]),
       description: this.formBuilder.control('',[Validators.required])
     })
+
+  }
+
+  getPersonId() {
+    return JSON.parse(localStorage.getItem('user_info')).id
   }
 
   getStates(): void {
@@ -102,7 +109,17 @@ export class UserEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.editForm.value)
+    if (this.editForm.valid) {
+      const id = JSON.parse(localStorage.getItem('user_info')).id
+      this.userService.updateUserInfo(this.editForm.value, id)
+        .subscribe(
+          response => {
+            this.globalService.handleSuccess(`Alterações salvas com sucesso`)
+            this.back()
+          },
+          error => this.globalService.handleError(error)
+        )
+    }
   }
 
   back() {

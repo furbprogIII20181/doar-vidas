@@ -5,6 +5,9 @@
     </mat-card-header>
     <form [formGroup]="editForm" (ngSubmit)="onSubmit()" novalidate>
       <mat-card-content>
+          <div class="field">
+              <input formControlName="id" type="hidden" autocomplete="off">
+          </div>
         <div class="field">
             <mat-form-field>
                 <input matInput formControlName="name" [placeholder]="labelName" autocomplete="off">
@@ -42,8 +45,9 @@
         </div>
         <div class="field">
             <mat-form-field>
-              <input matInput formControlName="phone" placeholder="* Celular" autocomplete="off">
+              <input matInput formControlName="phone" placeholder="* Celular" autocomplete="off" maxlength="11">
               <mat-error *ngIf="!editForm.get('phone').valid && editForm.get('phone').dirty">Celular é obrigatório</mat-error>
+              <mat-hint align="end">{{editForm.get('phone').value.length}} / 11</mat-hint>
             </mat-form-field>
         </div>
         <div class="field" *ngIf="editForm.get('bloodType').value">
@@ -57,7 +61,8 @@
         </div>
         <div class="field">
           <mat-form-field>
-            <textarea matInput placeholder="* Descrição" formControlName="description"></textarea>
+            <textarea matInput placeholder="* Descrição" formControlName="description" maxlength="1000"></textarea>
+            <mat-hint align="end">{{editForm.get('description').value.length}} / 1000</mat-hint>
           </mat-form-field>
         </div>
       </mat-card-content>

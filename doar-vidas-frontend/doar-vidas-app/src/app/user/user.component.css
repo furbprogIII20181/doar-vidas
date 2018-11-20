@@ -12,6 +12,7 @@
 }
 
 .userTitle {
+    margin-bottom:0;
     margin-left: 15px;
     text-transform: uppercase;
     font-weight: bold;
@@ -20,6 +21,12 @@
 
 .userSubtitle {
     margin-left: 15px;
-    font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
+}
+
+.userSubtitle:hover,
+.userSubtitle:active,
+.userSubtitle:visited,
+.userSubtitle:focus {
+    color:#0000FF;
 }

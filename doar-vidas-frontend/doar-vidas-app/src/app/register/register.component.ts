@@ -117,7 +117,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    // Verificar por que quando for instituição não está validando
     if (this.registerForm.valid) {
       let cpfCnpj = this.registerForm.get('cpfCnpj').value
       this.registerForm.get('cpfCnpj').setValue(cpfCnpj.replace(/\D/g,''))

@@ -57,16 +57,34 @@ export class GlobalService {
   }
 
   handleError(error) {
-    // if (error.error.error_description) {
-    //   alert(error.error.error_description)
-    // } else {
-    //   alert(error.error.message)
-    // }
-    if (error.status == 401) {
-      localStorage.clear()
-      this.router.navigate(['/login'])
+    switch(error.status) {
+      case 401:
+        localStorage.clear()
+        this.router.navigate(['/login'])
+        this.handleErrorMessage(`Sessão espirada. Favor logar novamente.`)
+        break;
+      case 500:
+        this.handleErrorMessage(`Ocorreu um erro interno. Contate-nos para reportar o erro.`)
+        break;
+      case 400:
+        this.handleErrorMessage(`Caminho não encontrado.`)
+        break;
+      case 403:
+        this.handleErrorMessage(`Acesso negado.`)
+        break;
+      case 404:
+        this.handleErrorMessage(`Caminho não encontrado.`)
+        break;
+      case 405:
+        this.handleErrorMessage(`Método não autorizado.`)
+        break;
+      case 502:
+        this.handleErrorMessage(`Porta de Entrada ruim.`)
+        break;
+      default:
+        this.handleErrorMessage(error.message)
+        break;
     }
-    this.handleErrorMessage(error.message)
   }
   
   handleErrorMessage(message) {
