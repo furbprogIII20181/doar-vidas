@@ -42,7 +42,7 @@
 <main id="main-content" class="main-content" role="main">
   <mat-sidenav-container fxFlexFill class="sidenav-container">
     <mat-sidenav #sidenav fxLayout="column" class="sidenav-content">
-      <app-menu></app-menu>
+      <app-menu [sidenav]="sidenav"></app-menu>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
       <router-outlet></router-outlet>

@@ -65,11 +65,20 @@ export class UserEditComponent implements OnInit {
       bloodType: this.formBuilder.control({value:'', disabled: true},[Validators.required]),
       description: this.formBuilder.control('',[Validators.required])
     })
-
+    this.setTypePersonProperties()
   }
 
   getPersonId() {
     return JSON.parse(localStorage.getItem('user_info')).id
+  }
+
+  setTypePersonProperties() {
+    const type = JSON.parse(localStorage.getItem('user_info')).type
+    if (type == "I") {
+      this.labelCpf = "* Cnpj"
+      this.labelName = "* Nome Fantasia"
+      this.labelLastname = "* Razão Social"
+    }
   }
 
   getStates(): void {

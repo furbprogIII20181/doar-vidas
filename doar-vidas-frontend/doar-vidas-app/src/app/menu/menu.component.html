@@ -1,7 +1,9 @@
 <nav fxLayout="column" role="navigation">
-  <ul>
+  <ul *ngFor="let menuItem of menuItems">
     <li>
-      <a [routerLink]="['/']" mat-button>Home</a> 
+      <button (click)="navigate(menuItem?.link)" mat-button>
+        {{ menuItem?.title }}
+      </button>
     </li>
   </ul>
 </nav>
