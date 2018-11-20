@@ -59,10 +59,9 @@ public class MyUserController {
 			return new ResponseEntity<>(pojo, HttpStatus.OK);
 		}
 		
-		return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	// TODO testar se este metodo funciona
 	@PatchMapping("/update/{id}")
 	public ResponseEntity<?> partialUpdateName(@PathVariable("id") Integer id, @RequestBody UserUpdatePojo pojo) {
 		Optional<Person> personPojo = personRepo.findById(id);
@@ -70,9 +69,9 @@ public class MyUserController {
 			Person person = personPojo.get();
 			BeanUtils.copyProperties(pojo, person);
 			personRepo.save(person);
-			return new ResponseEntity<>(null, HttpStatus.OK);
+			return new ResponseEntity<>(HttpStatus.OK);
 		}
-		return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 }

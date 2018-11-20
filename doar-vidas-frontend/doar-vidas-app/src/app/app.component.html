@@ -1,7 +1,12 @@
 <header role="banner">
   <mat-toolbar color="warn">
     <mat-toolbar-row>
-      <div class="menu-class" fxShow="true" fxHide.gt-sm="true">
+      <div
+        *ngIf="isLoggedIn"
+        class="menu-class"
+        fxShow="true"
+        fxHide.gt-sm="true"
+      >
         <button
           mat-flat-button
           color="warn"
@@ -16,7 +21,7 @@
         <a [routerLink]="['/']" role="logo">{{ title }}</a>
       </div>
 
-      <div class="user-options">
+      <div *ngIf="isLoggedIn" class="user-options">
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>person</mat-icon>
         </button>

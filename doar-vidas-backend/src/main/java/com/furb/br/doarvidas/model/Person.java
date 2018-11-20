@@ -45,7 +45,7 @@ public class Person extends BasicEntity {
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
 	private UserEntity user;
 	
-	@Column
+	@Column(length = 1000)
 	private String description;
 
 	@Column(nullable = false)
