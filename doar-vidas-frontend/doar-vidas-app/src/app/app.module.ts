@@ -27,6 +27,7 @@ import { NewSolicitationComponent } from './institution/solicitations/new-solici
 import { UserComponent } from './user/user.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DonationsComponent } from './donations/donations.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NewSolicitationComponent,
     UserComponent,
     UserEditComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DonationsComponent
   ],
   imports: [
     BrowserModule,

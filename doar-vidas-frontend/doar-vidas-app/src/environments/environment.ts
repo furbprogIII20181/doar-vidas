@@ -21,7 +21,9 @@ export const environment = {
     darBaixa: "http://localhost:8080/rest/private/solicitation/baixa",
     saveSolicitation: "http://localhost:8080/rest/private/solicitation/save",
     getMyUserInfo: "http://localhost:8080/rest/private/user",
-    updateUserInfo: "http://localhost:8080/rest/private/user/update"
+    updateUserInfo: "http://localhost:8080/rest/private/user/update",
+    getUserDonations: "http://localhost:8080/rest/private/donation/donations",
+    deleteDonation: "http://localhost:8080/rest/private/donation"
   }
 };
 
