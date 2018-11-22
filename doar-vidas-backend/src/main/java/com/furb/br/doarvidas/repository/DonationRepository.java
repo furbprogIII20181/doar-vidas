@@ -14,7 +14,7 @@ import com.furb.br.doarvidas.model.entities.DonationEntity;
  */
 public interface DonationRepository extends BasicRepository<DonationEntity> {
 
-	@Query("SELECT d FROM donation d WHERE d.donator = :donatorId")
+	@Query("SELECT d FROM donation d WHERE d.donator.id = :donatorId")
 	List<DonationEntity> findAllByDonatorId(@Param("donatorId") Integer donatorId);
 	
 }
