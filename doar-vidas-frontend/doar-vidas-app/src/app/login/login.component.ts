@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
     this.loginService.loginAction(body).subscribe(
       (data) => {
         this.onSuccess(data);
-        this.loginService.onSuccess();
       },
       (error) => this.globalService.handleError(error)
     )
@@ -45,13 +44,13 @@ export class LoginComponent implements OnInit {
     this.globalService.getUserByEmail(this.loginForm.get('email').value).subscribe (
       (data) => { 
         localStorage.setItem('user_info', JSON.stringify(data));
-        
         this.globalService.handleSuccess(`Bem vindo, ${data.name}`)
         if (data.type == 'D') {
           this.router.navigate(['/solicitations']);
         } else {
           this.router.navigate(['/donators']);
         }
+        this.loginService.onSuccess();        
       },
       (error) => this.globalService.handleError(error)
     )

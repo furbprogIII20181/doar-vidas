@@ -17,7 +17,7 @@
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
             <mat-error *ngIf="!loginForm.get('password').valid  && loginForm.get('password').dirty">A senha deve ter no mínimo 6 caracteres.</mat-error>
         </mat-form-field> 
-        <a class="forgot-pass-link" href="#">Esqueceu a senha?</a>
+        <a class="forgot-pass-link" [routerLink]="['/forgot-pass']">Esqueceu a senha?</a>
       </mat-card-content>
       <mat-card-actions>
         <button mat-flat-button color="warn" role="button" [disabled]="!this.loginForm.valid && this.loginForm.get('email').dirty">Entrar</button>
@@ -26,8 +26,8 @@
       <mat-card-actions>
         <p>Ou faça login pelas redes sociais:</p>
         <div class="social-login-buttons">
-          <a mat-flat-button role="button">Facebook</a>
-          <a mat-flat-button color="warn" role="button">Google</a>
+          <a mat-flat-button role="button" [routerLink]="['/facebook']">Facebook</a>
+          <a mat-flat-button color="warn" role="button" [routerLink]="['/google']">Google</a>
         </div>
         <mat-divider></mat-divider>
         <a mat-button class="btn-register" color="warn" [routerLink]="['/register']">Cadastre-se aqui.</a>

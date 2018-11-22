@@ -26,33 +26,33 @@ export class MenuComponent implements OnInit {
     this.isLoggedIn = this.globalService.getIsLoggedin();
     this.loginService.getIsLoggedInListener().subscribe(isAuthenticated => {
       this.isLoggedIn = isAuthenticated;
-    });
-    if (this.isLoggedIn) {
-      if (this.getTypePerson() == "I") {
-        this.menuItems = [
-          {
-            link: "/donators",
-            title: 'Doadores'
-          },
-          {
-            link: "/institution/solicitations",
-            title: 'Solicitações'
-          },
-          {
-            link: "/institution/solicitations/new",
-            title: 'Nova Solicitação'
-          }
-        ]
-  
-      } else {
-        this.menuItems = [
-          {
-            link: "/solicitations",
-            title: 'Solicitações'
-          }
-        ]
+      if (this.isLoggedIn) {
+        if (this.getTypePerson() == "I") {
+          this.menuItems = [
+            {
+              link: "/donators",
+              title: 'Doadores'
+            },
+            {
+              link: "/institution/solicitations",
+              title: 'Solicitações'
+            },
+            {
+              link: "/institution/solicitations/new",
+              title: 'Nova Solicitação'
+            }
+          ]
+    
+        } else {
+          this.menuItems = [
+            {
+              link: "/solicitations",
+              title: 'Solicitações'
+            }
+          ]
+        }
       }
-    }
+    });
   }
 
   getTypePerson(): string {

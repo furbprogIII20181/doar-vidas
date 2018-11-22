@@ -165,6 +165,7 @@ export class RegisterComponent implements OnInit {
         } else {
           this.router.navigate(['/donators']);
         }
+        this.loginService.onSuccess();
       },
       (error) => this.globalService.handleError(error)
     )

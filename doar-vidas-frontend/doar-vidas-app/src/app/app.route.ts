@@ -11,6 +11,7 @@ import { ISolicitationComponent } from "./institution/solicitations/i-solicitati
 import { NewSolicitationComponent } from "./institution/solicitations/new-solicitation/new-solicitation.component";
 import { UserComponent } from "./user/user.component";
 import { UserEditComponent } from "./user/user-edit/user-edit.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
 export const ROUTES: Routes = [
   { path: "", component: HomeComponent },
@@ -24,5 +25,6 @@ export const ROUTES: Routes = [
   { path: "institution/solicitations", component: ISolicitationComponent },
   { path: "institution/solicitations/new", component: NewSolicitationComponent },
   { path: "user", component: UserComponent },
-  { path: "user/edit", component: UserEditComponent }
+  { path: "user/edit", component: UserEditComponent },
+  { path: "**", component: NotFoundComponent }
 ];

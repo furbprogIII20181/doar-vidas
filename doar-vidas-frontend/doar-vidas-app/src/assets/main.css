@@ -12,3 +12,14 @@
   display: flex;
   align-items: center;
 }
+.mat-card-header .mat-card-title {
+  font-size:22px !important;
+  color:#f44336;
+}
+.mat-card-header {
+  justify-content: center;
+}
+.mat-card-header .mat-card-title h1 {
+  margin-top:0;
+  font-weight:400;
+}

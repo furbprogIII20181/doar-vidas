@@ -26,6 +26,7 @@ import { ModalBaixaComponent } from './institution/solicitations/i-solicitation/
 import { NewSolicitationComponent } from './institution/solicitations/new-solicitation/new-solicitation.component';
 import { UserComponent } from './user/user.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
     ModalBaixaComponent,
     NewSolicitationComponent,
     UserComponent,
-    UserEditComponent
+    UserEditComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
