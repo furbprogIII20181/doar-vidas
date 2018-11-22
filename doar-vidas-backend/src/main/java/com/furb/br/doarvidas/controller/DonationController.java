@@ -64,7 +64,7 @@ public class DonationController extends AbstractController<DonationPojo> {
 		List<DonationEntity> donators = donationRepo.findAllByDonatorId(id);
 		List<DonationTablePojo> pojo = new ArrayList<>();
 		donators.forEach(d -> {
-			pojo.add(new DonationTablePojo(d.getInstitution().getName(), d.getInstitution().getCity(),
+			pojo.add(new DonationTablePojo(d.getId(), d.getInstitution().getName(), d.getInstitution().getCity(),
 					d.getInstitution().getState(), d.getDate()));
 		});
 
