@@ -1,0 +1,46 @@
+.login-card {
+    max-width: 400px;
+    margin: 30px auto;
+}
+
+.login-card .mat-form-field {
+    display: block;
+}
+.login-card .mat-card-actions {
+    margin:0;
+}
+.login-card .mat-card-actions button {
+    width:100%;
+    margin-bottom:20px;
+}
+.login-card .mat-card-actions button:disabled {
+    background: #f44336;
+    color:#fff;
+    opacity: 0.5;
+}
+.login-card .mat-card-actions a.btn-register {
+    margin-top:40px;
+    display: block;
+    text-align: center;
+    font-size: 22px;
+}
+
+.social-login-buttons {
+    margin-bottom:15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-card .mat-card-actions .social-login-buttons a {
+    width:49%;
+}
+
+.login-card .mat-card-actions p {
+    margin-top:0;
+}
+
+.forgot-pass-link {
+    display: block;
+    color:rgba(0,0,0,.87);
+    text-align: right;
+}

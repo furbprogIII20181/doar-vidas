@@ -1,0 +1,32 @@
+section.new-solicitation-block {
+    max-width: 600px;
+    margin:30px auto;
+}
+.mat-card-header .mat-card-title {
+    font-size:22px;
+    color:#f44336;
+}
+.mat-card-header {
+    justify-content: center;
+}
+.mat-card-header .mat-card-title h1 {
+    margin-top:0;
+    font-weight:400;
+}
+.field .mat-form-field {
+    width: 98%;
+}
+.field {
+    margin:10px 0;
+    display: flex;
+    justify-content: space-between
+}
+.register-actions {
+    width: 98%;
+    margin:0;
+    display: flex;
+    justify-content: space-between
+}
+.register-actions .button {
+    width: 48%;
+}

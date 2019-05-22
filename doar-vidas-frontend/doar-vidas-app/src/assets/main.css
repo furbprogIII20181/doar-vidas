@@ -1,0 +1,25 @@
+.mat-snack-bar-container.error-snack {
+  background:#B00020;
+}
+.mat-snack-bar-container.blue-snack {
+  background: #2196F3;
+}
+.mat-snack-bar-container.success-snack {
+  background: #28a745;
+}
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.mat-card-header .mat-card-title {
+  font-size:22px !important;
+  color:#f44336;
+}
+.mat-card-header {
+  justify-content: center;
+}
+.mat-card-header .mat-card-title h1 {
+  margin-top:0;
+  font-weight:400;
+}

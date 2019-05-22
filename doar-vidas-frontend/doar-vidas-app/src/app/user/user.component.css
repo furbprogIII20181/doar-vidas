@@ -1,0 +1,32 @@
+.userCard {
+    width: 90%;
+    margin: 30px auto 0;
+}
+
+.row {
+    margin-top: 30px;
+}
+
+.iconImg {
+    max-width: 300px;
+}
+
+.userTitle {
+    margin-bottom:0;
+    margin-left: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.userSubtitle {
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.userSubtitle:hover,
+.userSubtitle:active,
+.userSubtitle:visited,
+.userSubtitle:focus {
+    color:#0000FF;
+}

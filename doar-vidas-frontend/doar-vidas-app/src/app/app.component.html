@@ -1,21 +1,51 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <div fxShow="true" fxHide.gt-sm="true">
-      <button mat-mini-fab color="primary" class="btn-btn-menu" (click)="sidenav.toggle()">☰</button>
-    </div>
-    <a [routerLink]="['/']">Doar vidas</a>
-  </mat-toolbar-row>
-</mat-toolbar>
+<header role="banner">
+  <mat-toolbar color="warn">
+    <mat-toolbar-row>
+      <div
+        *ngIf="isLoggedIn"
+        class="menu-class"
+        fxShow="true"
+        fxHide.gt-sm="true"
+      >
+        <button
+          mat-flat-button
+          color="warn"
+          role="button"
+          class="btn btn-menu"
+          (click)="sidenav.toggle()"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div class="logo-container">
+        <a [routerLink]="['/']" role="logo">{{ title }}</a>
+      </div>
 
-<mat-sidenav-container fxFlexFill class="example-container">
-  <mat-sidenav #sidenav fxLayout="column">
-    <div fxLayout="column">
-      <a routerLink="/home" mat-button> Previsão </a>
-      <a routerLink="/chart" mat-button> Gráfico </a>
-      <a routerLink="/about" mat-button> Sobre </a>
-    </div>
-  </mat-sidenav>
-  <mat-sidenav-content fxFlexFill>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+      <div *ngIf="isLoggedIn" class="user-options">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>person</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/user']">
+            <mat-icon>person</mat-icon>
+            <span>Minha conta</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>transfer_within_a_station</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>
+<main id="main-content" class="main-content" role="main">
+  <mat-sidenav-container fxFlexFill class="sidenav-container">
+    <mat-sidenav #sidenav fxLayout="column" class="sidenav-content">
+      <app-menu [sidenav]="sidenav"></app-menu>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</main>

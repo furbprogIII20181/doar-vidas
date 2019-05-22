@@ -3,7 +3,28 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: {
+    states: "http://www.mocky.io/v2/5ba64a653200006600963d74",
+    // states: "http://www.mocky.io/v2/5ba64cb33200005600963d75",
+    registerDonator: "http://localhost:8080/rest/public/donator/save",
+    registerInstitution: "http://localhost:8080/rest/public/institution/save",
+    login: "http://localhost:8080/oauth/token",
+    getUserInfo: "http://localhost:8080/rest/private/user/findByEmail",
+    donatorsListAll: "http://localhost:8080/rest/public/donator/listAll",
+    solicitationsListAll: "http://localhost:8080/rest/private/solicitation/listAll",
+    solicitationById: "http://localhost:8080/rest/private/solicitation",
+    solicitationByInstitutionId: "http://localhost:8080/rest/private/solicitation/findByInstitution",
+    saveDonation: "http://localhost:8080/rest/private/donation/save",
+    donatorById: "http://localhost:8080/rest/public/donator",
+    deleteSolicitation: "http://localhost:8080/rest/private/solicitation/",
+    darBaixa: "http://localhost:8080/rest/private/solicitation/baixa",
+    saveSolicitation: "http://localhost:8080/rest/private/solicitation/save",
+    getMyUserInfo: "http://localhost:8080/rest/private/user",
+    updateUserInfo: "http://localhost:8080/rest/private/user/update",
+    getUserDonations: "http://localhost:8080/rest/private/donation/donations",
+    deleteDonation: "http://localhost:8080/rest/private/donation"
+  }
 };
 
 /*

@@ -1,0 +1,28 @@
+<mat-card class="outerContainer">
+
+  <div class="row">
+    <div>
+      <img class="iconImg" src="http://desviantes.blob.core.windows.net/desviantes/production/media/uploads/cachoeira_do_robert%C3%A3o_-_amparo_-_rj.jpg"
+        alt="imgPerfil">
+    </div>
+    <div>
+      <h1 class="institutionTitle">{{ donator?.name }} {{ donator?.lastName }}</h1>
+      <p class="institutionSubTitle">{{ donator?.city }} - {{ donator?.state }}</p>
+      <p class="institutionSubTitle">{{ getMappedBlood(donator?.bloodType) }}</p>
+      <p class="institutionTitle">{{ donator?.phone }}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="leftDiv">
+      <p>
+        {{ donator?.description }}
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <button class="button" mat-button (click)="back()"><mat-icon>arrow_back_ios</mat-icon> Voltar</button>
+  </div>
+
+</mat-card>

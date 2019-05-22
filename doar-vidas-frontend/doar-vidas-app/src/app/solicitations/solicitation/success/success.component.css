@@ -1,0 +1,12 @@
+.outerContainer {
+  width: 90%;
+  margin: 30px auto 0;
+  text-align: center;
+}
+
+.outerContainer h1,
+.outerContainer h3,
+.outerContainer h5 {
+  font-weight: normal;
+  margin-bottom: 50px;
+}

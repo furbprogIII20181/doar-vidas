@@ -1,0 +1,34 @@
+<section class="new-solicitation-block">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title><h1>Nova Solicitação de Doação</h1></mat-card-title>
+      </mat-card-header>
+      <form [formGroup]="newSolicitationForm" (ngSubmit)="onSubmit()" novalidate>
+        <mat-card-content>
+          <div class="field">
+              <input formControlName="institutionID" type="hidden">
+          </div>
+          <div class="field">
+              <mat-form-field>
+                <mat-select placeholder="* Tipo Sanguíneo" formControlName="bloodType">
+                  <mat-option *ngFor="let bloodType of bloodTypes" [value]="bloodType.code">
+                    {{bloodType.description}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+          </div>
+          <div class="field">
+              <mat-form-field>
+                <input matInput formControlName="quantity" placeholder="Quantidade" autocomplete="off">
+                <mat-error *ngIf="!newSolicitationForm.get('quantity').valid && newSolicitationForm.get('quantity').dirty">Quantidade é obrigatório</mat-error>
+              </mat-form-field>
+          </div>
+        </mat-card-content>
+      </form>
+      <mat-card-actions class="register-actions">
+        <button class="button" mat-button (click)="back()"><mat-icon>arrow_back_ios</mat-icon> Voltar</button>
+        <button role="button" color="warn" (click)="onSubmit()" mat-flat-button class="button">Cadastrar</button>
+      </mat-card-actions>
+    </mat-card>
+  </section>
+  

@@ -1,0 +1,25 @@
+<section class="user">
+  <mat-card class="userCard">
+    <div class="row">
+      <div class="img">
+        <img class="iconImg" src="http://desviantes.blob.core.windows.net/desviantes/production/media/uploads/cachoeira_do_robert%C3%A3o_-_amparo_-_rj.jpg"
+        alt="imgPerfil">
+      </div>
+      <div class="user-name">
+        <h1 class="userTitle">{{user?.name}} {{user?.lastName}}</h1>
+        <a class="userSubtitle" [routerLink]="['/user/edit']">Editar informações</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p *ngIf="user?.bloodType">Tipo Sanguíneo: {{ getMappedBlood(user?.bloodType) }}</p>
+        <p>Telefone: {{ user?.phone }}</p>
+        <p>E-mail: {{ user?.email }}</p>
+        <p>CPF/CNPJ: {{ user?.cpfCnpj }}</p>
+        <p>Cidade: {{ user?.city }}</p>
+        <p>UF: {{ user?.state }}</p>
+        <p>Descrição: {{ user?.description }}</p>
+      </div>
+    </div>
+  </mat-card>
+</section>

@@ -1,0 +1,32 @@
+section.register-block {
+    max-width: 600px;
+    margin:30px auto;
+}
+.field .mat-form-field {
+    width: 98%;
+}
+.field {
+    margin:10px 0;
+    display: flex;
+    justify-content: space-between
+}
+.field-person-type {
+    display: flex;
+    justify-content: center;
+}
+.field-person-type .mat-radio-button {
+    margin:0 10px;
+}
+div.mat-card-header-text {
+    width:100%;
+    text-align: center;
+}
+.register-actions {
+    width: 98%;
+    margin:0;
+    display: flex;
+    justify-content: space-between
+}
+.register-actions .button {
+    width: 48%;
+}

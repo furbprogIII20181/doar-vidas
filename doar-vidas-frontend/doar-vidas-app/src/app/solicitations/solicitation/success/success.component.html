@@ -1,0 +1,11 @@
+<mat-card class="outerContainer">
+
+  <h1>Você concluiu o agendamento com sucesso!</h1>
+
+  <h3>{{ fullName }}</h3>
+
+  <h5>Data: {{ institutionDate | date: 'dd/MM/yyyy' }}</h5>
+
+  <button mat-raised-button color="warn" [routerLink]="['/solicitations']">Voltar</button>
+
+</mat-card>
